@@ -2,6 +2,7 @@ import dataclasses
 import enum
 import logging
 import socket
+import inspect
 
 import tyro
 
@@ -98,6 +99,17 @@ def create_policy(args: Args) -> _policy.Policy:
 
 def main(args: Args) -> None:
     policy = create_policy(args)
+    
+
+    inner = getattr(policy, "_policy", policy)  # unwrap recorder if present
+    model = getattr(inner, "_model", None)
+
+    logging.info("Policy class: %s", type(inner))
+    logging.info("Model class: %s", type(model))
+    logging.info("sample_actions file: %s", inspect.getsourcefile(model.sample_actions))
+    logging.info("sample_actions qualname: %s", model.sample_actions.__qualname__)
+    logging.info("is_pytorch: %s", getattr(inner, "_is_pytorch_model", None))
+
     policy_metadata = policy.metadata
 
     # Record the policy's behavior.
