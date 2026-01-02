@@ -107,9 +107,16 @@ class WebsocketPolicyServer:
                 # Get model from policy
                 if hasattr(inner_policy, '_model'):
                     model = inner_policy._model
+                    print(f"SERVER: Trying to get timings from model...")
+                    print(f"SERVER: Model type: {type(model)}")
+                    print(f"SERVER: Has profiler? {hasattr(model, 'profiler')}")
                     # Get component timings if profiler exists
                     if hasattr(model, 'profiler'):
-                        component_timings = model.profiler.get_timings()
+                        timings = model.profiler.get_timings()
+                        print(f"SERVER: Got timings: {timings}")
+                        component_timings = timings
+                    else:
+                        print(f"SERVER: Model has NO profiler attribute")
                 
 
                 action["server_timing"] = {

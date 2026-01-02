@@ -63,6 +63,7 @@ class SectionProfiler:
     
     def start_section(self, name: str):
         """Start profiling a section."""
+        print(f"PROFILER-SECTION: Starting '{name}'")
         self.current_section = name
         self.section_start_time = time.perf_counter()
         self.section_start_gpu = self._get_gpu_stats()
@@ -74,7 +75,10 @@ class SectionProfiler:
     
     def end_section(self) -> Dict:
         """End profiling a section and return metrics."""
+        print(f"PROFILER-SECTION: Ending '{self.current_section}'")
+
         if self.current_section is None:
+            print("PROFILER-SECTION: No active section!")
             return {}
         
         # Stop GPU monitoring
@@ -113,6 +117,7 @@ class SectionProfiler:
             'gpu_memory_delta_mb': memory_delta_mb,
             'gpu_memory_peak_mb': peak_memory_mb,
         }
+        print(f"PROFILER-SECTION: Result for '{self.current_section}': {result}")
         
         # Reset for next section
         self.current_section = None
@@ -144,11 +149,16 @@ class Pi0Profiler:
                 timing = self.profiler.section_profiler.end_section()
                 if timing:
                     self.profiler.current_timings[self.name] = timing
+                    print(f"PROFILER: Stored timing for '{self.name}': {timing}")
+                else:
+                    print(f"PROFILER: No timing returned for '{self.name}'") 
         
         return SectionTimer(self, name)
     
     def get_timings(self) -> Dict:
         """Get current timing data and reset."""
+        print(f"PROFILER: get_timings() called. Current keys: {list(self.current_timings.keys())}")
         timings = self.current_timings.copy()
         self.current_timings = {}
+        print(f"PROFILER: Returning: {timings}")
         return timings
