@@ -3,6 +3,7 @@ import enum
 import logging
 import pathlib
 import time
+import json  # Add this import
 
 import numpy as np
 from openpi_client import websocket_client_policy as _websocket_client_policy
@@ -33,7 +34,7 @@ class Args:
     port: int | None = 8000
     # API key to use for the server.
     api_key: str | None = None
-    # Number of steps to run the policy for.
+    # Number of inference iterations to run.
     num_steps: int = 20
     # Path to save the timings to a parquet file. (e.g., timing.parquet)
     timing_file: pathlib.Path | None = None
@@ -135,24 +136,70 @@ def main(args: Args) -> None:
 
     timing_recorder = TimingRecorder()
 
-    for _ in tqdm.trange(args.num_steps, desc="Running policy"):
+    for i in tqdm.trange(args.num_steps, desc="Running policy"):
         inference_start = time.time()
         action = policy.infer(obs_fn())
+        
+        # Record client inference time
         timing_recorder.record("client_infer_ms", 1000 * (time.time() - inference_start))
+        
+        # Record existing server timings
         for key, value in action.get("server_timing", {}).items():
             timing_recorder.record(f"server_{key}", value)
-        for key, value in action.get("policy_timing", {}).items():
-            timing_recorder.record(f"policy_{key}", value)
+        
+        component_timings = action.get("component_timings", {})
+        if component_timings:  # Only if server sent them
+            logger.debug(f"Iteration {i}: Got component timings for {list(component_timings.keys())}")
+            
+            for component, metrics in component_timings.items():
+                # Record wall time
+                wall_time = metrics.get('wall_time_ms', 0)
+                if wall_time > 0:
+                    timing_recorder.record(f"component_{component}_wall_ms", wall_time)
+                
+                # Record GPU utilization
+                gpu_avg = metrics.get('gpu_utilization_avg_percent', 0)
+                gpu_max = metrics.get('gpu_utilization_max_percent', 0)
+                if gpu_avg > 0 or gpu_max > 0:
+                    timing_recorder.record(f"component_{component}_gpu_avg_%", gpu_avg)
+                    timing_recorder.record(f"component_{component}_gpu_max_%", gpu_max)
+                
+                # Record GPU memory
+                mem_delta = metrics.get('gpu_memory_delta_mb', 0)
+                mem_peak = metrics.get('gpu_memory_peak_mb', 0)
+                if mem_delta != 0 or mem_peak > 0:
+                    timing_recorder.record(f"component_{component}_mem_delta_mb", mem_delta)
+                    timing_recorder.record(f"component_{component}_mem_peak_mb", mem_peak)
+            
+            # Record batch size if available
+            batch_size = action.get("batch_size", 1)
+            timing_recorder.record("batch_size", batch_size)
+        else:
+            logger.debug(f"Iteration {i}: No component timings received")
 
     timing_recorder.print_all_stats()
 
     if args.timing_file is not None:
         timing_recorder.write_parquet(args.timing_file)
+        
+        # Also save a JSON summary for easy reading
+        json_path = args.timing_file.with_suffix('.json')
+        summary = {}
+        for key in timing_recorder._timings.keys():
+            if key in timing_recorder._timings:
+                stats = timing_recorder.get_stats(key)
+                summary[key] = stats
+        
+        with open(json_path, 'w') as f:
+            json.dump(summary, f, indent=2)
+        logger.info(f"JSON summary saved to {json_path}")
 
 
 def _random_observation_aloha() -> dict:
+    """Create random observation for ALOHA environment."""
+    # Note: Batch size is 1 here (single observation)
     return {
-        "state": np.ones((14,)),
+        "state": np.ones((14,)),  # Shape: (14,) = batch size 1
         "images": {
             "cam_high": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_low": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
@@ -164,18 +211,22 @@ def _random_observation_aloha() -> dict:
 
 
 def _random_observation_droid() -> dict:
+    """Create random observation for DROID environment."""
+    # Batch size 1
     return {
         "observation/exterior_image_1_left": np.random.randint(256, size=(224, 224, 3), dtype=np.uint8),
         "observation/wrist_image_left": np.random.randint(256, size=(224, 224, 3), dtype=np.uint8),
-        "observation/joint_position": np.random.rand(7),
-        "observation/gripper_position": np.random.rand(1),
+        "observation/joint_position": np.random.rand(7),  # Shape: (7,) = batch 1
+        "observation/gripper_position": np.random.rand(1),  # Shape: (1,) = batch 1
         "prompt": "do something",
     }
 
 
 def _random_observation_libero() -> dict:
+    """Create random observation for LIBERO environment."""
+    # Batch size 1
     return {
-        "observation/state": np.random.rand(8),
+        "observation/state": np.random.rand(8),  # Shape: (8,) = batch 1
         "observation/image": np.random.randint(256, size=(224, 224, 3), dtype=np.uint8),
         "observation/wrist_image": np.random.randint(256, size=(224, 224, 3), dtype=np.uint8),
         "prompt": "do something",

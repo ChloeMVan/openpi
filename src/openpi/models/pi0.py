@@ -12,6 +12,7 @@ from openpi.models import pi0_config
 import openpi.models.gemma as _gemma
 import openpi.models.siglip as _siglip
 from openpi.shared import array_typing as at
+from pi0_profiler import Pi0Profiler
 
 logger = logging.getLogger("openpi")
 
@@ -101,6 +102,8 @@ class Pi0(_model.BaseModel):
 
         # This attribute gets automatically set by model.train() and model.eval().
         self.deterministic = True
+
+        self.profiler = Pi0Profiler()
 
     @at.typecheck
     def embed_prefix(
@@ -234,14 +237,16 @@ class Pi0(_model.BaseModel):
                 noise = jax.random.normal(rng, (batch_size, self.action_horizon, self.action_dim))
 
         # first fill KV cache with a forward pass of the prefix
-        with jax.named_scope("embed_prefix"):
-            prefix_tokens, prefix_mask, prefix_ar_mask = self.embed_prefix(observation)
+        with self.profiler.time_section("image_encoder"):
+            with jax.named_scope("embed_prefix"):
+                prefix_tokens, prefix_mask, prefix_ar_mask = self.embed_prefix(observation)
         
         
-        with jax.named_scope("prefix_kv_cache_llm"):
-            prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
-            positions = jnp.cumsum(prefix_mask, axis=1) - 1
-            _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
+        with self.profiler.time_section("kv_cache_fill"):
+            with jax.named_scope("prefix_kv_cache_llm"):
+                prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
+                positions = jnp.cumsum(prefix_mask, axis=1) - 1
+                _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
 
         def step(carry):
             x_t, time = carry
@@ -294,8 +299,8 @@ class Pi0(_model.BaseModel):
             x_t, time = carry
             # robust to floating-point error
             return time >= -dt / 2
-
-        with jax.named_scope("flow_while_loop"):
-            x_0, _ = jax.lax.while_loop(cond, step, (noise, 1.0))
+        with self.profiler.time_section("flow_loop"):
+            with jax.named_scope("flow_while_loop"):
+                x_0, _ = jax.lax.while_loop(cond, step, (noise, 1.0))
             
         return x_0

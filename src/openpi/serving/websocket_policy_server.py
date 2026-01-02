@@ -4,6 +4,8 @@ import logging
 import time
 import traceback
 
+import numpy as np
+
 import os
 import jax
 
@@ -93,9 +95,30 @@ class WebsocketPolicyServer:
 
                 infer_time = time.monotonic() - infer_time
 
+                # Collect component timings from model profiler
+                component_timings = {}
+                
+                # Try to get the inner model
+                inner_policy = self._policy
+                # Unwrap recorder if present
+                if hasattr(inner_policy, '_policy'):
+                    inner_policy = inner_policy._policy
+                
+                # Get model from policy
+                if hasattr(inner_policy, '_model'):
+                    model = inner_policy._model
+                    # Get component timings if profiler exists
+                    if hasattr(model, 'profiler'):
+                        component_timings = model.profiler.get_timings()
+                
+
                 action["server_timing"] = {
                     "infer_ms": infer_time * 1000,
                 }
+
+                action["component_timings"] = component_timings
+
+
                 if prev_total_time is not None:
                     # We can only record the last total time since we also want to include the send time.
                     action["server_timing"]["prev_total_ms"] = prev_total_time * 1000
