@@ -158,7 +158,6 @@ class Pi0Profiler:
     def get_timings(self) -> Dict:
         """Get current timing data and reset."""
         print(f"PROFILER: get_timings() called. Current keys: {list(self.current_timings.keys())}")
-        timings = self.current_timings.copy()
-        self.current_timings = {}
+        timings = self.current_timings
         print(f"PROFILER: Returning: {timings}")
-        return timings
+        return self.current_timings.copy()
