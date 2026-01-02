@@ -36,8 +36,6 @@ class Args:
     api_key: str | None = None
     # Number of inference iterations to run.
     num_steps: int = 20
-    # Path to save the timings to a parquet file. (e.g., timing.parquet)
-    timing_file: pathlib.Path | None = None
     # Environment to run the policy in.
     env: EnvMode = EnvMode.ALOHA_SIM
 
@@ -131,10 +129,12 @@ def main(args: Args) -> None:
     logger.info(f"Server metadata: {policy.get_server_metadata()}")
 
     # Send a few observations to make sure the model is loaded.
+    logger.info("Warming up model...")
     for _ in range(2):
         policy.infer(obs_fn())
 
     timing_recorder = TimingRecorder()
+    logger.info(f"Running {args.num_steps} inference iterations...")
 
     for i in tqdm.trange(args.num_steps, desc="Running policy"):
         inference_start = time.time()
@@ -143,57 +143,78 @@ def main(args: Args) -> None:
         # Record client inference time
         timing_recorder.record("client_infer_ms", 1000 * (time.time() - inference_start))
         
-        # Record existing server timings
+        # Record server timings
         for key, value in action.get("server_timing", {}).items():
             timing_recorder.record(f"server_{key}", value)
         
+        # Record component timings (if available)
         component_timings = action.get("component_timings", {})
-        if component_timings:  # Only if server sent them
-            logger.debug(f"Iteration {i}: Got component timings for {list(component_timings.keys())}")
-            
+        if component_timings:
             for component, metrics in component_timings.items():
-                # Record wall time
+                # Wall time
                 wall_time = metrics.get('wall_time_ms', 0)
                 if wall_time > 0:
                     timing_recorder.record(f"component_{component}_wall_ms", wall_time)
                 
-                # Record GPU utilization
+                # GPU utilization
                 gpu_avg = metrics.get('gpu_utilization_avg_percent', 0)
                 gpu_max = metrics.get('gpu_utilization_max_percent', 0)
                 if gpu_avg > 0 or gpu_max > 0:
                     timing_recorder.record(f"component_{component}_gpu_avg_%", gpu_avg)
                     timing_recorder.record(f"component_{component}_gpu_max_%", gpu_max)
                 
-                # Record GPU memory
+                # GPU memory
                 mem_delta = metrics.get('gpu_memory_delta_mb', 0)
                 mem_peak = metrics.get('gpu_memory_peak_mb', 0)
                 if mem_delta != 0 or mem_peak > 0:
                     timing_recorder.record(f"component_{component}_mem_delta_mb", mem_delta)
                     timing_recorder.record(f"component_{component}_mem_peak_mb", mem_peak)
             
-            # Record batch size if available
+            # Batch size
             batch_size = action.get("batch_size", 1)
             timing_recorder.record("batch_size", batch_size)
-        else:
-            logger.debug(f"Iteration {i}: No component timings received")
 
+    # Print statistics
     timing_recorder.print_all_stats()
-
-    if args.timing_file is not None:
-        timing_recorder.write_parquet(args.timing_file)
-        
-        # Also save a JSON summary for easy reading
-        json_path = args.timing_file.with_suffix('.json')
-        summary = {}
-        for key in timing_recorder._timings.keys():
-            if key in timing_recorder._timings:
-                stats = timing_recorder.get_stats(key)
-                summary[key] = stats
-        
-        with open(json_path, 'w') as f:
-            json.dump(summary, f, indent=2)
-        logger.info(f"JSON summary saved to {json_path}")
-
+    
+    # Always save results
+    output_dir = pathlib.Path("./benchmark_results")
+    output_dir.mkdir(exist_ok=True, parents=True)
+    
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    parquet_path = output_dir / f"pi0_timing_{timestamp}.parquet"
+    json_path = output_dir / f"pi0_summary_{timestamp}.json"
+    
+    timing_recorder.write_parquet(parquet_path)
+    
+    # Save JSON summary
+    summary = {}
+    for key in timing_recorder._timings.keys():
+        if timing_recorder._timings[key]:
+            stats = timing_recorder.get_stats(key)
+            summary[key] = stats
+    
+    with open(json_path, 'w') as f:
+        json.dump(summary, f, indent=2)
+    
+    print("\n" + "="*60)
+    print("RESULTS SAVED:")
+    print(f"  Parquet: {parquet_path}")
+    print(f"  JSON:    {json_path}")
+    print("="*60)
+    
+    # Quick component summary
+    component_cols = [k for k in timing_recorder._timings.keys() if k.startswith("component_")]
+    if component_cols:
+        print("\nCOMPONENT TIMING COLLECTED:")
+        for col in sorted(component_cols):
+            if "wall_ms" in col:
+                times = timing_recorder._timings[col]
+                if times:
+                    component_name = col.replace("component_", "").replace("_wall_ms", "")
+                    mean = np.mean(times)
+                    p99 = np.percentile(times, 99)
+                    print(f"  {component_name}: {mean:.1f}ms mean, {p99:.1f}ms P99")
 
 def _random_observation_aloha() -> dict:
     """Create random observation for ALOHA environment."""
