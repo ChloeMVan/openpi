@@ -4,6 +4,9 @@ import logging
 import time
 import traceback
 
+import os
+import jax
+
 from openpi_client import base_policy as _base_policy
 from openpi_client import msgpack_numpy
 import websockets.asyncio.server as _server
@@ -51,6 +54,9 @@ class WebsocketPolicyServer:
 
         await websocket.send(packer.pack(self._metadata))
 
+        trace_dir = os.environ.get("OPENPI_TRACE_DIR", "/tmp/openpi_trace")
+        did_trace = False
+
         prev_total_time = None
         while True:
             try:
@@ -58,7 +64,33 @@ class WebsocketPolicyServer:
                 obs = msgpack_numpy.unpackb(await websocket.recv())
 
                 infer_time = time.monotonic()
-                action = self._policy.infer(obs)
+                # action = self._policy.infer(obs)
+
+                if not did_trace:
+                    did_trace = True
+
+                    # Warm up (important for JIT)
+                    for _ in range(2):
+                        warm = self._policy.infer(obs)
+                        # Force sync so warmup actually executes
+                        jax.tree.map(
+                            lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
+                            warm,
+                        )
+
+                    # Trace one inference
+                    jax.profiler.start_trace(trace_dir)
+                    action = self._policy.infer(obs)
+                    jax.tree.map(
+                        lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
+                        action,
+                    )
+                    jax.profiler.stop_trace()
+
+                    logger.info("Wrote JAX trace to %s", trace_dir)
+                else:
+                    action = self._policy.infer(obs)
+
                 infer_time = time.monotonic() - infer_time
 
                 action["server_timing"] = {
