@@ -12,7 +12,7 @@ from openpi.models import pi0_config
 import openpi.models.gemma as _gemma
 import openpi.models.siglip as _siglip
 from openpi.shared import array_typing as at
-from pi0_profiler import Pi0Profiler
+from openpi.models.pi0_profiler import Pi0Profiler
 
 logger = logging.getLogger("openpi")
 
