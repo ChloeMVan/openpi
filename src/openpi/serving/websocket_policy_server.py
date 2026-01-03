@@ -115,6 +115,7 @@ class WebsocketPolicyServer:
                         timings = model.profiler.get_timings()
                         print(f"SERVER: Got timings: {timings}")
                         component_timings = timings
+                        model.profiler.clear_timings()
                     else:
                         print(f"SERVER: Model has NO profiler attribute")
                 

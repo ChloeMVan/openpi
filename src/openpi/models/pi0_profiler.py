@@ -161,3 +161,6 @@ class Pi0Profiler:
         timings = self.current_timings
         print(f"PROFILER: Returning: {timings}")
         return self.current_timings.copy()
+
+    def clear_timings(self):
+        self.current_timings = {}
