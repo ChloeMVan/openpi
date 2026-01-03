@@ -34,7 +34,7 @@ class Args:
     # API key to use for the server.
     api_key: str | None = None
     # Number of steps to run the policy for.
-    num_steps: int = 10
+    num_steps: int = 20
     # Path to save the timings to a parquet file. (e.g., timing.parquet)
     timing_file: pathlib.Path | None = None
     # Environment to run the policy in.
