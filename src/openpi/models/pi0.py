@@ -274,8 +274,8 @@ class Pi0(_model.BaseModel):
             jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                jax.debug.print(f"\tkey: {type(key)} {key}")
-                jax.debug.print(f"\tvalue: {type(val)} {val}\n")
+                jax.debug.print("\tkey: {} {}", type(key), key)
+                jax.debug.print("\tvalue: {} {}", type(val), val)
 
 
         # note that we use the convention more common in diffusion literature, where t=1 is noise and t=0 is the target
