@@ -329,7 +329,9 @@ class Pi0(_model.BaseModel):
                 suffix_attn_mask = make_attn_mask(suffix_mask, suffix_ar_mask)
                 prefix_attn_mask = einops.repeat(prefix_mask, "b p -> b s p", s=suffix_tokens.shape[1])
                 full_attn_mask = jnp.concatenate([prefix_attn_mask, suffix_attn_mask], axis=-1)
+                jax.debug.print("full_attn_mask shape: {}", full_attn_mask.shape)
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
+                jax.debug.print("suffix positions: {}", positions[0])
 
             with jax.named_scope("suffix_llm_forward"):
                 (prefix_out, suffix_out), returned_kv_cache = self.PaliGemma.llm(
@@ -339,6 +341,11 @@ class Pi0(_model.BaseModel):
                     kv_cache=kv_cache,
                     adarms_cond=[None, adarms_cond],
                 )
+            
+            if kv_cache is not None:
+                # Look at the LAST 51 positions in cache
+                last_positions = jnp.arange(kv_cache[0].shape[2] - 51, kv_cache[0].shape[2])
+                jax.debug.print("Cache positions being written to: {}", last_positions)
 
             jax.debug.print("Returned_kv_cache seq_len: {}", returned_kv_cache[0].shape[2])
 
