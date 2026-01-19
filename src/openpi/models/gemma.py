@@ -169,7 +169,11 @@ class Attention(nn.Module):
     def __call__(self, xs, positions, attn_mask, kv_cache):
         jax.debug.print("[GEMMA] attention method")
         jax.debug.print(f"[GEMMA] attention attn_mask {attn_mask}")
-        jax.debug.print(f"[GEMMA] attention kv_cache {kv_cache[0].shape[2]}")
+        if kv_cache is not None:
+            cache_k, cache_v = kv_cache
+            jax.debug.print("[GEMMA] attention kv_cache shapes: k={}, v={}", cache_k.shape, cache_v.shape)
+        else:
+            jax.debug.print("[GEMMA] attention kv_cache is None")
         # all experts must share the same head dim, num heads, and num kv heads for self-attention to work
         assert all(config.head_dim == self.configs[0].head_dim for config in self.configs)
         assert all(config.num_heads == self.configs[0].num_heads for config in self.configs)
