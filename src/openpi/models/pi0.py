@@ -332,21 +332,13 @@ class Pi0(_model.BaseModel):
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
 
             with jax.named_scope("suffix_llm_forward"):
-                (prefix_out, suffix_out), new_kv_cache = self.PaliGemma.llm(
+                (prefix_out, suffix_out), _ = self.PaliGemma.llm(
                     [None, suffix_tokens],
                     mask=full_attn_mask,
                     positions=positions,
-                    kv_cache=kv_cache,  # OLD cache
+                    kv_cache=kv_cache,
                     adarms_cond=[None, adarms_cond],
                 )
-        
-            # Compare old vs new cache
-            old_len = kv_cache[0].shape[2]  # Sequence dimension
-            new_len = new_kv_cache[0].shape[2]
-            jax.debug.print("Cache update: {} -> {} (diff: {})", old_len, new_len, new_len - old_len)
-        
-            # Make sure we're using the NEW cache for next iteration
-            kv_cache = new_kv_cache  # This is CRITICAL!
 
             assert prefix_out is None
 
