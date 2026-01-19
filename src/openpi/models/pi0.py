@@ -249,7 +249,7 @@ class Pi0(_model.BaseModel):
         num_steps: int | at.Int[at.Array, ""] = 10,
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
-        with jax.named_scope("preprocess_observation", observation):
+        with jax.named_scope("preprocess_observation"):
             logger.info("what is observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
