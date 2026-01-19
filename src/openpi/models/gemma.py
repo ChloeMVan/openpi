@@ -403,7 +403,8 @@ class Module(nn.Module):
         kv_cache: KVCache | None = None,
         deterministic: bool = True,
     ) -> tuple[Sequence[at.Float[at.Array, "b _t _d"] | None], KVCache]:
-        logger.info("gemma method for getting kvcache")
+        jax.debug.print("[GEMMA] method for getting kvcache")
+        jax.debug.print("[GEMMA] kv_cache provided: {}", kv_cache is not None)
         embedded = jax.tree.map(lambda e: e.astype(self.embed_dtype), embedded) # conversion
         mask = jnp.asarray(mask)[:, None, :, :]
         if adarms_cond is None: # AdaRMS is a normalization technique. We don't use it for the prefix. (the prefix being the observation)

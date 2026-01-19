@@ -332,13 +332,15 @@ class Pi0(_model.BaseModel):
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
 
             with jax.named_scope("suffix_llm_forward"):
-                (prefix_out, suffix_out), _ = self.PaliGemma.llm(
+                (prefix_out, suffix_out), returned_kv_cache = self.PaliGemma.llm(
                     [None, suffix_tokens],
                     mask=full_attn_mask,
                     positions=positions,
                     kv_cache=kv_cache,
                     adarms_cond=[None, adarms_cond],
                 )
+
+            jax.debug.print("Returned_kv_cache seq_len: {}", returned_kv_cache[0].shape[2])
 
             assert prefix_out is None
 
