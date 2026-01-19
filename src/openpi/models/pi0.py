@@ -259,11 +259,23 @@ class Pi0(_model.BaseModel):
 
             # observation contains 
             observation = _model.preprocess_observation(None, observation, train=False)
-            logger.info("post processing observation")
+            '''Preprocess the observations by performing image augmentations (if train=True), resizing (if necessary), and
+            filling in a default image mask (if necessary).
+            return Observation(
+                images=out_images,
+                image_masks=out_masks,
+                state=observation.state,
+                tokenized_prompt=observation.tokenized_prompt,
+                tokenized_prompt_mask=observation.tokenized_prompt_mask,
+                token_ar_mask=observation.token_ar_mask,
+                token_loss_mask=observation.token_loss_mask,
+            )
+            '''
+            jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                logger.info(f"\tkey: {type(key)} {key}")
-                logger.info(f"\tvalue: {type(val)} {val}\n")
+                jax.debug.print(f"\tkey: {type(key)} {key}")
+                jax.debug.print(f"\tvalue: {type(val)} {val}\n")
 
 
         # note that we use the convention more common in diffusion literature, where t=1 is noise and t=0 is the target
@@ -331,7 +343,7 @@ class Pi0(_model.BaseModel):
                 full_attn_mask = jnp.concatenate([prefix_attn_mask, suffix_attn_mask], axis=-1)
                 jax.debug.print("full_attn_mask shape: {}", full_attn_mask.shape)
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
-                jax.debug.print("suffix positions: {}", positions[0])
+                # jax.debug.print("suffix positions: {}", positions[0])
 
             with jax.named_scope("suffix_llm_forward"):
                 (prefix_out, suffix_out), returned_kv_cache = self.PaliGemma.llm(
@@ -342,10 +354,10 @@ class Pi0(_model.BaseModel):
                     adarms_cond=[None, adarms_cond],
                 )
             
-            if kv_cache is not None:
-                # Look at the LAST 51 positions in cache
-                last_positions = jnp.arange(kv_cache[0].shape[2] - 51, kv_cache[0].shape[2])
-                jax.debug.print("Cache positions being written to: {}", last_positions)
+            # if kv_cache is not None:
+            #     # Look at the LAST 51 positions in cache
+            #     last_positions = jnp.arange(kv_cache[0].shape[2] - 51, kv_cache[0].shape[2])
+            #     jax.debug.print("Cache positions being written to: {}", last_positions)
 
             jax.debug.print("Returned_kv_cache seq_len: {}", returned_kv_cache[0].shape[2])
 

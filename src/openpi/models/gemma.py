@@ -167,6 +167,9 @@ class Attention(nn.Module):
 
     @nn.compact
     def __call__(self, xs, positions, attn_mask, kv_cache):
+        jax.debug.print("[GEMMA] attention method")
+        jax.debug.print(f"[GEMMA] attention attn_mask {attn_mask}")
+        jax.debug.print(f"[GEMMA] attention kv_cache {kv_cache[0].shape[2]}")
         # all experts must share the same head dim, num heads, and num kv heads for self-attention to work
         assert all(config.head_dim == self.configs[0].head_dim for config in self.configs)
         assert all(config.num_heads == self.configs[0].num_heads for config in self.configs)
@@ -217,9 +220,13 @@ class Attention(nn.Module):
             cache_k, cache_v = kv_cache
             k = jnp.concatenate([cache_k, k], axis=1)
             v = jnp.concatenate([cache_v, v], axis=1)
+            # The kv_cache contains previously computed keys/values from earlier 
+            # tokens (PaliGemma observation tokens). New tokens (from action expert)
+            # have their K/V concatenated to the end of this cache.
 
         q = einops.rearrange(q, "B T (K G) H -> B T K G H", K=self.configs[0].num_kv_heads)
         logits = jnp.einsum("BTKGH,BSKH->BKGTS", q, k, preferred_element_type=jnp.float32)
+        # The query (from action expert) computes attention scores with all keys in k, which includes:
 
         if attn_mask.shape != (q.shape[0], 1, q.shape[1], k.shape[1]):
             raise ValueError(
@@ -247,6 +254,12 @@ class Attention(nn.Module):
                     lora_config=config.lora_configs.get("attn"),
                 )
                 out.append(out_einsum("BTNH,NHD->BTD", encoded[:, start:end]))
+                '''
+                total_tokens = PaliGemma tokens + action expert tokens (e.g., 861 + 50 = 911 tokens)
+                The attention output needs to be split back to each expert's tokens:
+                    PaliGemma gets encoded[:, 0:861] (tokens 0-860)
+                    Action expert gets encoded[:, 861:911] (tokens 861-910)
+                '''
                 start = end
             else:
                 out.append(None)
