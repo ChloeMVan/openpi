@@ -299,8 +299,8 @@ class Pi0(_model.BaseModel):
                 suffix_tokens, suffix_mask, suffix_ar_mask, adarms_cond = self.embed_suffix(
                     observation, x_t, timestep_print
                 )
-                jax.debug.print("timestep value: {}, shape: {}, dtype: {}", 
-                timestep_print, timestep_print.shape, timestep_print.dtype)
+                # jax.debug.print("timestep value: {}, shape: {}, dtype: {}", 
+                # timestep_print, timestep_print.shape, timestep_print.dtype)
 
                 # The time step value is broadcasted to match the batch size so that every
                 #  example in the batch gets the same timestep.
@@ -348,6 +348,7 @@ class Pi0(_model.BaseModel):
         def cond(carry):
             x_t, time = carry
             # robust to floating-point error
+            # Continue while time >= -dt/2 (approximately time > 0)
             return time >= -dt / 2
 
         with jax.named_scope("flow_while_loop"):
