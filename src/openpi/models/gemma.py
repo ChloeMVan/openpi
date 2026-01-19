@@ -222,15 +222,19 @@ class Attention(nn.Module):
 
         if kv_cache is not None:
             cache_k, cache_v = kv_cache
+            jax.debug.print(f"[GEMMA] attention before keys {k}")
+            jax.debug.print(f"[GEMMA] attention before values {v}")
             k = jnp.concatenate([cache_k, k], axis=1)
             v = jnp.concatenate([cache_v, v], axis=1)
+            jax.debug.print(f"[GEMMA] attention after keys {k}")
+            jax.debug.print(f"[GEMMA] attention after values {v}")
             # The kv_cache contains previously computed keys/values from earlier 
             # tokens (PaliGemma observation tokens). New tokens (from action expert)
             # have their K/V concatenated to the end of this cache.
 
         q = einops.rearrange(q, "B T (K G) H -> B T K G H", K=self.configs[0].num_kv_heads)
         logits = jnp.einsum("BTKGH,BSKH->BKGTS", q, k, preferred_element_type=jnp.float32)
-        # The query (from action expert) computes attention scores with all keys in k, which includes:
+        # The query (from action expert) computes attention scores with all keys in k,
 
         if attn_mask.shape != (q.shape[0], 1, q.shape[1], k.shape[1]):
             raise ValueError(
@@ -244,6 +248,7 @@ class Attention(nn.Module):
         probs = jax.nn.softmax(masked_logits, axis=-1).astype(dtype)
 
         encoded = jnp.einsum("BKGTS,BSKH->BTKGH", probs, v)
+        # computing the attention-weighted sum of values (V)
         encoded = einops.rearrange(encoded, "B T K G H -> B T (K G) H")
 
         out = []

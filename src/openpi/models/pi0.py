@@ -250,11 +250,11 @@ class Pi0(_model.BaseModel):
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
         with jax.named_scope("preprocess_observation"):
-            logger.info("what is observation")
+            jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                logger.info(f"\tkey: {type(key)} {key}")
-                logger.info(f"\tvalue: {type(val)} {val}\n")
+                jax.debug.print("\tkey: {} {}", type(key), key)
+                jax.debug.print("\tvalue: {} {}", type(val), val)
 
 
             # observation contains 
@@ -342,6 +342,7 @@ class Pi0(_model.BaseModel):
                 prefix_attn_mask = einops.repeat(prefix_mask, "b p -> b s p", s=suffix_tokens.shape[1])
                 full_attn_mask = jnp.concatenate([prefix_attn_mask, suffix_attn_mask], axis=-1)
                 jax.debug.print("full_attn_mask shape: {}", full_attn_mask.shape)
+                jax.debug.print("full_attn_mask: {}", full_attn_mask)
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
                 # jax.debug.print("suffix positions: {}", positions[0])
 
