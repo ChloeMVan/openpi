@@ -253,16 +253,18 @@ class Pi0(_model.BaseModel):
             logger.info("what is observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                logger.info("\tkey: %s %s", type(key), key)
-                logger.info("\tvalue: %s %s\n", type(val), val)
+                logger.info(f"\tkey: {type(key)} {key}")
+                logger.info(f"\tvalue: {type(val)} {val}\n")
+
 
             # observation contains 
             observation = _model.preprocess_observation(None, observation, train=False)
             logger.info("post processing observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                logger.info("\tkey: ", type(key), key)
-                logger.info("\tvalue: ", type(val), val, "\n")
+                logger.info(f"\tkey: {type(key)} {key}")
+                logger.info(f"\tvalue: {type(val)} {val}\n")
+
 
         # note that we use the convention more common in diffusion literature, where t=1 is noise and t=0 is the target
         # distribution. yes, this is the opposite of the pi0 paper, and I'm sorry.
