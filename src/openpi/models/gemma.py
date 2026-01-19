@@ -40,7 +40,7 @@ import openpi.training.sharding as sharding
 
 import logging
 
-logger = logging.getLogger("gemma")
+logger = logging.getLogger(__name__)
 
 PALIGEMMA_VOCAB_SIZE = 257_152
 

@@ -253,8 +253,8 @@ class Pi0(_model.BaseModel):
             logger.info("what is observation")
             ob_dict = observation.to_dict()
             for key,val in ob_dict.items():
-                logger.info("\tkey: ", type(key), key)
-                logger.info("\tvalue: ", type(val), val, "\n")
+                logger.info("\tkey: %s %s", type(key), key)
+                logger.info("\tvalue: %s %s\n", type(val), val)
 
             # observation contains 
             observation = _model.preprocess_observation(None, observation, train=False)
@@ -283,7 +283,7 @@ class Pi0(_model.BaseModel):
             prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
             positions = jnp.cumsum(prefix_mask, axis=1) - 1 
             _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
-            logger.info("KV_cache", kv_cache)
+            logger.info(f"KV_cache {kv_cache}")
 
         def step(carry):
             x_t, time = carry
@@ -292,7 +292,7 @@ class Pi0(_model.BaseModel):
                 suffix_tokens, suffix_mask, suffix_ar_mask, adarms_cond = self.embed_suffix(
                     observation, x_t, timestep_print
                 )
-                logger.info("timestep", timestep_print)
+                logger.info(f"timestep {timestep_print}")
 
                 # The time step value is broadcasted to match the batch size so that every
                 #  example in the batch gets the same timestep.
