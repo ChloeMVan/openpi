@@ -1,0 +1,1800 @@
+post processing observation
+	key: <class 'str'> state
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[82.63553   -5.4848194  0.2133592 22.186712   9.838145  12.228343
+   1.8992877  9.869079  -4.7686777 -0.531165   4.588016   4.3002663
+   2.330531   1.5261674  0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.       ]]
+	key: <class 'str'> tokenized_prompt
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[   2 1042 2775  108    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0]]
+	key: <class 'str'> tokenized_prompt_mask
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[ True  True  True  True False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False]]
+	key: <class 'str'> token_ar_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> token_loss_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> image
+	value: <class 'dict'> {'base_0_rgb': Array([[[[-0.22352946, -0.54509807, -0.01176476],
+         [ 0.78039205,  0.65490186,  0.2784313 ],
+         [-0.4039216 ,  0.04313719,  0.6862744 ],
+         ...,
+         [-0.654902  ,  0.7960783 ,  0.6862744 ],
+         [ 0.31764698, -0.17647064,  0.8980391 ],
+         [ 0.3019607 ,  0.8823528 ,  0.6392156 ]],
+
+        [[-0.8980392 ,  0.43529403,  0.1294117 ],
+         [-0.04313731, -0.70980394,  0.86666656],
+         [-0.36470592, -0.52156866,  0.74117637],
+         ...,
+         [ 0.9764705 ,  0.6862744 , -0.5921569 ],
+         [-0.8509804 , -0.02745104,  0.3411764 ],
+         [ 0.7490195 , -0.3803922 ,  0.75686264]],
+
+        [[-0.6       , -0.20000005, -0.8039216 ],
+         [-0.60784316,  0.8509803 , -0.6313726 ],
+         [-0.9764706 ,  0.6862744 ,  0.39607835],
+         ...,
+         [-0.81960785,  0.13725483,  0.9137254 ],
+         [ 0.73333323, -0.3176471 , -1.        ],
+         [ 0.5764705 ,  0.3019607 ,  0.6862744 ]],
+
+        ...,
+
+        [[-0.21568632, -0.3803922 , -0.01176476],
+         [-0.7254902 , -0.22352946, -0.5372549 ],
+         [-0.9607843 ,  0.11372542, -0.92941177],
+         ...,
+         [-0.03529418,  0.52156854, -0.92156863],
+         [-0.4901961 , -0.4901961 , -0.5294118 ],
+         [-0.20784318,  0.52156854,  0.9372548 ]],
+
+        [[-0.8039216 , -0.5686275 , -0.5921569 ],
+         [ 0.32549012, -0.14509809, -0.9843137 ],
+         [ 0.65490186, -0.07450986,  0.71764696],
+         ...,
+         [-0.654902  , -0.01176476,  0.63137245],
+         [-0.27843142,  0.73333323, -0.4666667 ],
+         [-0.13725495,  0.96862733,  0.28627443]],
+
+        [[-0.04313731,  0.30980384, -0.38823533],
+         [-0.34901965,  0.2549019 ,  0.9450979 ],
+         [-0.4901961 , -0.70980394, -0.92941177],
+         ...,
+         [ 0.19215679, -0.01176476,  0.34901953],
+         [-0.09019613,  0.18431365,  0.58431363],
+         [-0.84313726, -0.8509804 , -0.13725495]]]], dtype=float32), 'left_wrist_0_rgb': Array([[[[-0.3803922 ,  0.9450979 , -0.8117647 ],
+         [-0.67058825,  0.4509803 , -0.35686278],
+         [ 0.2549019 ,  0.32549012, -0.92941177],
+         ...,
+         [ 0.7725489 , -0.28627455, -0.15294123],
+         [ 0.12156856,  0.26274502,  0.2549019 ],
+         [ 0.15294111,  0.48235285, -0.02745104]],
+
+        [[ 0.7490195 ,  0.2549019 , -0.75686276],
+         [ 0.38039207,  0.9450979 , -0.05098045],
+         [-0.90588236,  0.19215679, -0.84313726],
+         ...,
+         [ 0.78039205, -0.9764706 , -0.17647064],
+         [ 0.09803915,  0.46666658,  0.0666666 ],
+         [ 0.34901953,  0.05882347, -0.64705884]],
+
+        [[ 0.56862736, -0.34901965,  0.23137248],
+         [-0.58431375, -0.1686275 , -0.47450984],
+         [ 0.31764698,  0.12156856, -0.654902  ],
+         ...,
+         [ 0.71764696, -0.4901961 ,  0.63137245],
+         [ 0.6862744 , -1.        , -0.5372549 ],
+         [-0.88235295, -0.6313726 ,  0.5764705 ]],
+
+        ...,
+
+        [[ 0.19215679,  0.09019601,  0.65490186],
+         [ 0.4509803 ,  0.490196  ,  0.15294111],
+         [-0.23921573,  0.09803915, -0.5529412 ],
+         ...,
+         [ 0.33333325,  0.20784307,  0.29411757],
+         [ 0.78039205,  0.13725483,  0.80392146],
+         [ 0.14509797, -0.33333337,  0.14509797]],
+
+        [[ 0.39607835,  0.5294117 , -0.24705887],
+         [-0.15294123, -0.27058828, -0.96862745],
+         [ 0.81960773, -0.00392163, -0.09803927],
+         ...,
+         [-0.6627451 , -0.5058824 , -0.78039217],
+         [-0.8039216 ,  0.15294111,  0.32549012],
+         [-0.54509807,  0.86666656, -0.94509804]],
+
+        [[ 0.63137245,  0.52156854,  0.1294117 ],
+         [ 0.01176465, -0.10588241, -0.17647064],
+         [ 0.17647052, -0.22352946, -0.27058828],
+         ...,
+         [-0.7411765 , -0.27843142, -0.02745104],
+         [-0.34901965, -0.04313731,  0.99215674],
+         [-0.43529415, -0.8745098 ,  0.41960776]]]], dtype=float32), 'right_wrist_0_rgb': Array([[[[ 0.9450979 , -0.8509804 , -0.07450986],
+         [-0.09803927, -0.5137255 , -0.03529418],
+         [ 0.14509797,  0.9372548 ,  0.8117646 ],
+         ...,
+         [-0.16078436, -0.02745104,  0.95294106],
+         [-0.49803925,  0.80392146,  0.09803915],
+         [ 0.69411755,  0.20784307, -0.9764706 ]],
+
+        [[-0.26274514,  0.2156862 ,  0.2156862 ],
+         [ 0.5372548 , -0.36470592, -0.45882356],
+         [ 0.03529406, -0.1686275 , -0.07450986],
+         ...,
+         [ 0.5137254 ,  0.43529403,  0.46666658],
+         [-0.05098045, -0.1686275 , -0.5764706 ],
+         [ 0.10588229,  0.69411755, -0.9529412 ]],
+
+        [[ 0.74117637,  0.50588226,  0.3647058 ],
+         [ 0.60784304,  0.7960783 , -0.7647059 ],
+         [ 0.96862733, -0.5372549 , -0.8980392 ],
+         ...,
+         [-0.5058824 , -0.32549024, -0.14509809],
+         [-0.427451  , -0.41176474, -0.79607844],
+         [ 0.5294117 , -0.27843142, -0.41960788]],
+
+        ...,
+
+        [[-0.14509809,  0.9843136 ,  0.3647058 ],
+         [ 0.71764696,  0.8823528 ,  0.12156856],
+         [-0.45098042, -0.7647059 ,  0.835294  ],
+         ...,
+         [-0.5372549 ,  0.48235285, -0.7882353 ],
+         [-0.9137255 ,  0.29411757,  0.45882344],
+         [ 0.03529406,  0.01960778,  0.18431365]],
+
+        [[-0.58431375, -0.9843137 , -1.        ],
+         [ 0.49803913, -0.12941182, -0.6156863 ],
+         [-0.43529415, -0.77254903,  0.54509795],
+         ...,
+         [ 0.60784304, -0.41176474,  0.7960783 ],
+         [-0.9607843 ,  0.9450979 ,  0.7098038 ],
+         [-0.7176471 , -0.8039216 , -0.64705884]],
+
+        [[-0.5921569 , -0.8509804 ,  0.490196  ],
+         [ 0.4274509 , -0.92156863, -0.7882353 ],
+         [ 0.8509803 , -0.52156866, -0.24705887],
+         ...,
+         [-0.36470592,  0.9999999 , -0.20000005],
+         [ 0.6470587 , -0.92941177, -0.62352943],
+         [ 0.35686266,  0.89019597,  0.05882347]]]], dtype=float32)}
+	key: <class 'str'> image_mask
+	value: <class 'dict'> {'base_0_rgb': Array([ True], dtype=bool), 'left_wrist_0_rgb': Array([ True], dtype=bool), 'right_wrist_0_rgb': Array([ True], dtype=bool)}
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: False
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=1.000 ===
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=0.500 ===
+post processing observation
+	key: <class 'str'> state
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[82.63553   -5.4848194  0.2133592 22.186712   9.838145  12.228343
+   1.8992877  9.869079  -4.7686777 -0.531165   4.588016   4.3002663
+   2.330531   1.5261674  0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.       ]]
+	key: <class 'str'> tokenized_prompt
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[   2 1042 2775  108    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0]]
+	key: <class 'str'> tokenized_prompt_mask
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[ True  True  True  True False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False]]
+	key: <class 'str'> token_ar_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> token_loss_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> image
+	value: <class 'dict'> {'base_0_rgb': Array([[[[-0.22352946, -0.54509807, -0.01176476],
+         [ 0.78039205,  0.65490186,  0.2784313 ],
+         [-0.4039216 ,  0.04313719,  0.6862744 ],
+         ...,
+         [-0.654902  ,  0.7960783 ,  0.6862744 ],
+         [ 0.31764698, -0.17647064,  0.8980391 ],
+         [ 0.3019607 ,  0.8823528 ,  0.6392156 ]],
+
+        [[-0.8980392 ,  0.43529403,  0.1294117 ],
+         [-0.04313731, -0.70980394,  0.86666656],
+         [-0.36470592, -0.52156866,  0.74117637],
+         ...,
+         [ 0.9764705 ,  0.6862744 , -0.5921569 ],
+         [-0.8509804 , -0.02745104,  0.3411764 ],
+         [ 0.7490195 , -0.3803922 ,  0.75686264]],
+
+        [[-0.6       , -0.20000005, -0.8039216 ],
+         [-0.60784316,  0.8509803 , -0.6313726 ],
+         [-0.9764706 ,  0.6862744 ,  0.39607835],
+         ...,
+         [-0.81960785,  0.13725483,  0.9137254 ],
+         [ 0.73333323, -0.3176471 , -1.        ],
+         [ 0.5764705 ,  0.3019607 ,  0.6862744 ]],
+
+        ...,
+
+        [[-0.21568632, -0.3803922 , -0.01176476],
+         [-0.7254902 , -0.22352946, -0.5372549 ],
+         [-0.9607843 ,  0.11372542, -0.92941177],
+         ...,
+         [-0.03529418,  0.52156854, -0.92156863],
+         [-0.4901961 , -0.4901961 , -0.5294118 ],
+         [-0.20784318,  0.52156854,  0.9372548 ]],
+
+        [[-0.8039216 , -0.5686275 , -0.5921569 ],
+         [ 0.32549012, -0.14509809, -0.9843137 ],
+         [ 0.65490186, -0.07450986,  0.71764696],
+         ...,
+         [-0.654902  , -0.01176476,  0.63137245],
+         [-0.27843142,  0.73333323, -0.4666667 ],
+         [-0.13725495,  0.96862733,  0.28627443]],
+
+        [[-0.04313731,  0.30980384, -0.38823533],
+         [-0.34901965,  0.2549019 ,  0.9450979 ],
+         [-0.4901961 , -0.70980394, -0.92941177],
+         ...,
+         [ 0.19215679, -0.01176476,  0.34901953],
+         [-0.09019613,  0.18431365,  0.58431363],
+         [-0.84313726, -0.8509804 , -0.13725495]]]], dtype=float32), 'left_wrist_0_rgb': Array([[[[-0.3803922 ,  0.9450979 , -0.8117647 ],
+         [-0.67058825,  0.4509803 , -0.35686278],
+         [ 0.2549019 ,  0.32549012, -0.92941177],
+         ...,
+         [ 0.7725489 , -0.28627455, -0.15294123],
+         [ 0.12156856,  0.26274502,  0.2549019 ],
+         [ 0.15294111,  0.48235285, -0.02745104]],
+
+        [[ 0.7490195 ,  0.2549019 , -0.75686276],
+         [ 0.38039207,  0.9450979 , -0.05098045],
+         [-0.90588236,  0.19215679, -0.84313726],
+         ...,
+         [ 0.78039205, -0.9764706 , -0.17647064],
+         [ 0.09803915,  0.46666658,  0.0666666 ],
+         [ 0.34901953,  0.05882347, -0.64705884]],
+
+        [[ 0.56862736, -0.34901965,  0.23137248],
+         [-0.58431375, -0.1686275 , -0.47450984],
+         [ 0.31764698,  0.12156856, -0.654902  ],
+         ...,
+         [ 0.71764696, -0.4901961 ,  0.63137245],
+         [ 0.6862744 , -1.        , -0.5372549 ],
+         [-0.88235295, -0.6313726 ,  0.5764705 ]],
+
+        ...,
+
+        [[ 0.19215679,  0.09019601,  0.65490186],
+         [ 0.4509803 ,  0.490196  ,  0.15294111],
+         [-0.23921573,  0.09803915, -0.5529412 ],
+         ...,
+         [ 0.33333325,  0.20784307,  0.29411757],
+         [ 0.78039205,  0.13725483,  0.80392146],
+         [ 0.14509797, -0.33333337,  0.14509797]],
+
+        [[ 0.39607835,  0.5294117 , -0.24705887],
+         [-0.15294123, -0.27058828, -0.96862745],
+         [ 0.81960773, -0.00392163, -0.09803927],
+         ...,
+         [-0.6627451 , -0.5058824 , -0.78039217],
+         [-0.8039216 ,  0.15294111,  0.32549012],
+         [-0.54509807,  0.86666656, -0.94509804]],
+
+        [[ 0.63137245,  0.52156854,  0.1294117 ],
+         [ 0.01176465, -0.10588241, -0.17647064],
+         [ 0.17647052, -0.22352946, -0.27058828],
+         ...,
+         [-0.7411765 , -0.27843142, -0.02745104],
+         [-0.34901965, -0.04313731,  0.99215674],
+         [-0.43529415, -0.8745098 ,  0.41960776]]]], dtype=float32), 'right_wrist_0_rgb': Array([[[[ 0.9450979 , -0.8509804 , -0.07450986],
+         [-0.09803927, -0.5137255 , -0.03529418],
+         [ 0.14509797,  0.9372548 ,  0.8117646 ],
+         ...,
+         [-0.16078436, -0.02745104,  0.95294106],
+         [-0.49803925,  0.80392146,  0.09803915],
+         [ 0.69411755,  0.20784307, -0.9764706 ]],
+
+        [[-0.26274514,  0.2156862 ,  0.2156862 ],
+         [ 0.5372548 , -0.36470592, -0.45882356],
+         [ 0.03529406, -0.1686275 , -0.07450986],
+         ...,
+         [ 0.5137254 ,  0.43529403,  0.46666658],
+         [-0.05098045, -0.1686275 , -0.5764706 ],
+         [ 0.10588229,  0.69411755, -0.9529412 ]],
+
+        [[ 0.74117637,  0.50588226,  0.3647058 ],
+         [ 0.60784304,  0.7960783 , -0.7647059 ],
+         [ 0.96862733, -0.5372549 , -0.8980392 ],
+         ...,
+         [-0.5058824 , -0.32549024, -0.14509809],
+         [-0.427451  , -0.41176474, -0.79607844],
+         [ 0.5294117 , -0.27843142, -0.41960788]],
+
+        ...,
+
+        [[-0.14509809,  0.9843136 ,  0.3647058 ],
+         [ 0.71764696,  0.8823528 ,  0.12156856],
+         [-0.45098042, -0.7647059 ,  0.835294  ],
+         ...,
+         [-0.5372549 ,  0.48235285, -0.7882353 ],
+         [-0.9137255 ,  0.29411757,  0.45882344],
+         [ 0.03529406,  0.01960778,  0.18431365]],
+
+        [[-0.58431375, -0.9843137 , -1.        ],
+         [ 0.49803913, -0.12941182, -0.6156863 ],
+         [-0.43529415, -0.77254903,  0.54509795],
+         ...,
+         [ 0.60784304, -0.41176474,  0.7960783 ],
+         [-0.9607843 ,  0.9450979 ,  0.7098038 ],
+         [-0.7176471 , -0.8039216 , -0.64705884]],
+
+        [[-0.5921569 , -0.8509804 ,  0.490196  ],
+         [ 0.4274509 , -0.92156863, -0.7882353 ],
+         [ 0.8509803 , -0.52156866, -0.24705887],
+         ...,
+         [-0.36470592,  0.9999999 , -0.20000005],
+         [ 0.6470587 , -0.92941177, -0.62352943],
+         [ 0.35686266,  0.89019597,  0.05882347]]]], dtype=float32)}
+	key: <class 'str'> image_mask
+	value: <class 'dict'> {'base_0_rgb': Array([ True], dtype=bool), 'left_wrist_0_rgb': Array([ True], dtype=bool), 'right_wrist_0_rgb': Array([ True], dtype=bool)}
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: False
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=1.000 ===
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=0.500 ===
+post processing observation
+	key: <class 'str'> state
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[82.63553   -5.4848194  0.2133592 22.186712   9.838145  12.228343
+   1.8992877  9.869079  -4.7686777 -0.531165   4.588016   4.3002663
+   2.330531   1.5261674  0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.       ]]
+	key: <class 'str'> tokenized_prompt
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[   2 1042 2775  108    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0]]
+	key: <class 'str'> tokenized_prompt_mask
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[ True  True  True  True False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False]]
+	key: <class 'str'> token_ar_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> token_loss_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> image
+	value: <class 'dict'> {'base_0_rgb': Array([[[[-0.22352946, -0.54509807, -0.01176476],
+         [ 0.78039205,  0.65490186,  0.2784313 ],
+         [-0.4039216 ,  0.04313719,  0.6862744 ],
+         ...,
+         [-0.654902  ,  0.7960783 ,  0.6862744 ],
+         [ 0.31764698, -0.17647064,  0.8980391 ],
+         [ 0.3019607 ,  0.8823528 ,  0.6392156 ]],
+
+        [[-0.8980392 ,  0.43529403,  0.1294117 ],
+         [-0.04313731, -0.70980394,  0.86666656],
+         [-0.36470592, -0.52156866,  0.74117637],
+         ...,
+         [ 0.9764705 ,  0.6862744 , -0.5921569 ],
+         [-0.8509804 , -0.02745104,  0.3411764 ],
+         [ 0.7490195 , -0.3803922 ,  0.75686264]],
+
+        [[-0.6       , -0.20000005, -0.8039216 ],
+         [-0.60784316,  0.8509803 , -0.6313726 ],
+         [-0.9764706 ,  0.6862744 ,  0.39607835],
+         ...,
+         [-0.81960785,  0.13725483,  0.9137254 ],
+         [ 0.73333323, -0.3176471 , -1.        ],
+         [ 0.5764705 ,  0.3019607 ,  0.6862744 ]],
+
+        ...,
+
+        [[-0.21568632, -0.3803922 , -0.01176476],
+         [-0.7254902 , -0.22352946, -0.5372549 ],
+         [-0.9607843 ,  0.11372542, -0.92941177],
+         ...,
+         [-0.03529418,  0.52156854, -0.92156863],
+         [-0.4901961 , -0.4901961 , -0.5294118 ],
+         [-0.20784318,  0.52156854,  0.9372548 ]],
+
+        [[-0.8039216 , -0.5686275 , -0.5921569 ],
+         [ 0.32549012, -0.14509809, -0.9843137 ],
+         [ 0.65490186, -0.07450986,  0.71764696],
+         ...,
+         [-0.654902  , -0.01176476,  0.63137245],
+         [-0.27843142,  0.73333323, -0.4666667 ],
+         [-0.13725495,  0.96862733,  0.28627443]],
+
+        [[-0.04313731,  0.30980384, -0.38823533],
+         [-0.34901965,  0.2549019 ,  0.9450979 ],
+         [-0.4901961 , -0.70980394, -0.92941177],
+         ...,
+         [ 0.19215679, -0.01176476,  0.34901953],
+         [-0.09019613,  0.18431365,  0.58431363],
+         [-0.84313726, -0.8509804 , -0.13725495]]]], dtype=float32), 'left_wrist_0_rgb': Array([[[[-0.3803922 ,  0.9450979 , -0.8117647 ],
+         [-0.67058825,  0.4509803 , -0.35686278],
+         [ 0.2549019 ,  0.32549012, -0.92941177],
+         ...,
+         [ 0.7725489 , -0.28627455, -0.15294123],
+         [ 0.12156856,  0.26274502,  0.2549019 ],
+         [ 0.15294111,  0.48235285, -0.02745104]],
+
+        [[ 0.7490195 ,  0.2549019 , -0.75686276],
+         [ 0.38039207,  0.9450979 , -0.05098045],
+         [-0.90588236,  0.19215679, -0.84313726],
+         ...,
+         [ 0.78039205, -0.9764706 , -0.17647064],
+         [ 0.09803915,  0.46666658,  0.0666666 ],
+         [ 0.34901953,  0.05882347, -0.64705884]],
+
+        [[ 0.56862736, -0.34901965,  0.23137248],
+         [-0.58431375, -0.1686275 , -0.47450984],
+         [ 0.31764698,  0.12156856, -0.654902  ],
+         ...,
+         [ 0.71764696, -0.4901961 ,  0.63137245],
+         [ 0.6862744 , -1.        , -0.5372549 ],
+         [-0.88235295, -0.6313726 ,  0.5764705 ]],
+
+        ...,
+
+        [[ 0.19215679,  0.09019601,  0.65490186],
+         [ 0.4509803 ,  0.490196  ,  0.15294111],
+         [-0.23921573,  0.09803915, -0.5529412 ],
+         ...,
+         [ 0.33333325,  0.20784307,  0.29411757],
+         [ 0.78039205,  0.13725483,  0.80392146],
+         [ 0.14509797, -0.33333337,  0.14509797]],
+
+        [[ 0.39607835,  0.5294117 , -0.24705887],
+         [-0.15294123, -0.27058828, -0.96862745],
+         [ 0.81960773, -0.00392163, -0.09803927],
+         ...,
+         [-0.6627451 , -0.5058824 , -0.78039217],
+         [-0.8039216 ,  0.15294111,  0.32549012],
+         [-0.54509807,  0.86666656, -0.94509804]],
+
+        [[ 0.63137245,  0.52156854,  0.1294117 ],
+         [ 0.01176465, -0.10588241, -0.17647064],
+         [ 0.17647052, -0.22352946, -0.27058828],
+         ...,
+         [-0.7411765 , -0.27843142, -0.02745104],
+         [-0.34901965, -0.04313731,  0.99215674],
+         [-0.43529415, -0.8745098 ,  0.41960776]]]], dtype=float32), 'right_wrist_0_rgb': Array([[[[ 0.9450979 , -0.8509804 , -0.07450986],
+         [-0.09803927, -0.5137255 , -0.03529418],
+         [ 0.14509797,  0.9372548 ,  0.8117646 ],
+         ...,
+         [-0.16078436, -0.02745104,  0.95294106],
+         [-0.49803925,  0.80392146,  0.09803915],
+         [ 0.69411755,  0.20784307, -0.9764706 ]],
+
+        [[-0.26274514,  0.2156862 ,  0.2156862 ],
+         [ 0.5372548 , -0.36470592, -0.45882356],
+         [ 0.03529406, -0.1686275 , -0.07450986],
+         ...,
+         [ 0.5137254 ,  0.43529403,  0.46666658],
+         [-0.05098045, -0.1686275 , -0.5764706 ],
+         [ 0.10588229,  0.69411755, -0.9529412 ]],
+
+        [[ 0.74117637,  0.50588226,  0.3647058 ],
+         [ 0.60784304,  0.7960783 , -0.7647059 ],
+         [ 0.96862733, -0.5372549 , -0.8980392 ],
+         ...,
+         [-0.5058824 , -0.32549024, -0.14509809],
+         [-0.427451  , -0.41176474, -0.79607844],
+         [ 0.5294117 , -0.27843142, -0.41960788]],
+
+        ...,
+
+        [[-0.14509809,  0.9843136 ,  0.3647058 ],
+         [ 0.71764696,  0.8823528 ,  0.12156856],
+         [-0.45098042, -0.7647059 ,  0.835294  ],
+         ...,
+         [-0.5372549 ,  0.48235285, -0.7882353 ],
+         [-0.9137255 ,  0.29411757,  0.45882344],
+         [ 0.03529406,  0.01960778,  0.18431365]],
+
+        [[-0.58431375, -0.9843137 , -1.        ],
+         [ 0.49803913, -0.12941182, -0.6156863 ],
+         [-0.43529415, -0.77254903,  0.54509795],
+         ...,
+         [ 0.60784304, -0.41176474,  0.7960783 ],
+         [-0.9607843 ,  0.9450979 ,  0.7098038 ],
+         [-0.7176471 , -0.8039216 , -0.64705884]],
+
+        [[-0.5921569 , -0.8509804 ,  0.490196  ],
+         [ 0.4274509 , -0.92156863, -0.7882353 ],
+         [ 0.8509803 , -0.52156866, -0.24705887],
+         ...,
+         [-0.36470592,  0.9999999 , -0.20000005],
+         [ 0.6470587 , -0.92941177, -0.62352943],
+         [ 0.35686266,  0.89019597,  0.05882347]]]], dtype=float32)}
+	key: <class 'str'> image_mask
+	value: <class 'dict'> {'base_0_rgb': Array([ True], dtype=bool), 'left_wrist_0_rgb': Array([ True], dtype=bool), 'right_wrist_0_rgb': Array([ True], dtype=bool)}
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: False
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=1.000 ===
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=0.500 ===
+post processing observation
+	key: <class 'str'> state
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[82.63553   -5.4848194  0.2133592 22.186712   9.838145  12.228343
+   1.8992877  9.869079  -4.7686777 -0.531165   4.588016   4.3002663
+   2.330531   1.5261674  0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.       ]]
+	key: <class 'str'> tokenized_prompt
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[   2 1042 2775  108    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0]]
+	key: <class 'str'> tokenized_prompt_mask
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[ True  True  True  True False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False]]
+	key: <class 'str'> token_ar_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> token_loss_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> image
+	value: <class 'dict'> {'base_0_rgb': Array([[[[ 0.17647052, -0.05098045, -0.41176474],
+         [ 0.52156854,  0.8509803 , -0.9529412 ],
+         [-0.52156866,  0.835294  , -0.4431373 ],
+         ...,
+         [-0.9764706 ,  0.3411764 , -0.58431375],
+         [-0.20784318,  0.8745097 , -0.6392157 ],
+         [ 0.6784313 , -0.05098045,  0.44313717]],
+
+        [[-0.2313726 , -0.2941177 , -0.13725495],
+         [ 0.5607842 , -0.92941177, -0.41176474],
+         [-0.52156866,  0.10588229, -0.9137255 ],
+         ...,
+         [ 0.7960783 ,  0.5372548 ,  0.39607835],
+         [-0.49803925, -0.7882353 , -0.8352941 ],
+         [-0.4666667 , -0.52156866,  0.3647058 ]],
+
+        [[-0.85882354, -0.45098042, -0.6627451 ],
+         [ 0.59215677,  0.9215685 ,  0.02745092],
+         [-0.39607847, -0.36470592,  0.7490195 ],
+         ...,
+         [ 0.52156854,  0.54509795, -0.8745098 ],
+         [ 0.6784313 ,  0.02745092, -0.05098045],
+         [ 0.01960778,  0.50588226, -0.8666667 ]],
+
+        ...,
+
+        [[ 0.19999993,  0.8745097 , -0.99215686],
+         [-1.        , -0.92941177,  0.22352934],
+         [ 0.6392156 ,  0.07450974, -0.6862745 ],
+         ...,
+         [ 0.6470587 , -0.26274514, -0.30980396],
+         [-0.9843137 , -0.99215686, -0.37254906],
+         [ 0.65490186, -0.16078436, -0.5058824 ]],
+
+        [[ 0.01960778,  0.56862736, -0.70980394],
+         [-0.64705884,  0.3411764 , -0.03529418],
+         [-0.6627451 ,  0.04313719,  0.32549012],
+         ...,
+         [-0.12156868,  0.6784313 ,  0.6784313 ],
+         [-0.427451  , -0.6156863 ,  0.6392156 ],
+         [-0.77254903, -0.4666667 ,  0.81960773]],
+
+        [[-0.03529418,  0.6392156 , -0.3176471 ],
+         [-1.        ,  0.9215685 , -0.10588241],
+         [ 0.69411755,  0.8509803 ,  0.19999993],
+         ...,
+         [ 0.6784313 ,  0.7019607 , -0.14509809],
+         [-0.7411765 ,  0.8509803 , -0.62352943],
+         [-0.8039216 ,  0.23921561,  0.9372548 ]]]], dtype=float32), 'left_wrist_0_rgb': Array([[[[-0.05098045,  0.16862738,  0.9999999 ],
+         [-0.5686275 , -0.6313726 ,  0.22352934],
+         [ 0.92941165,  0.81960773,  0.84313715],
+         ...,
+         [-0.7254902 ,  0.16078424,  0.45882344],
+         [ 0.86666656,  0.8117646 , -0.64705884],
+         [ 0.4274509 ,  0.03529406,  0.6784313 ]],
+
+        [[-0.5294118 , -0.9137255 ,  0.03529406],
+         [-0.9607843 , -0.7411765 , -0.427451  ],
+         [-0.7882353 , -0.3411765 ,  0.9607842 ],
+         ...,
+         [-0.17647064, -0.67058825,  0.27058816],
+         [-0.4431373 , -0.7176471 ,  0.19215679],
+         [ 0.44313717, -0.3176471 , -0.07450986]],
+
+        [[-0.6392157 ,  0.12156856,  0.7490195 ],
+         [ 0.9999999 ,  0.59215677,  0.45882344],
+         [ 0.8980391 ,  0.1294117 , -0.75686276],
+         ...,
+         [-0.20784318, -0.8745098 ,  0.30980384],
+         [ 0.4274509 , -0.20000005, -0.2313726 ],
+         [-0.27843142,  0.6470587 ,  0.41960776]],
+
+        ...,
+
+        [[ 0.02745092, -0.16078436,  0.34901953],
+         [-0.6862745 ,  0.8588234 ,  0.5999999 ],
+         [-0.7019608 , -0.6784314 , -0.36470592],
+         ...,
+         [-0.18431377, -0.654902  , -0.8509804 ],
+         [ 0.38039207,  0.7254901 , -0.7882353 ],
+         [ 0.80392146,  0.33333325,  0.01960778]],
+
+        [[ 0.01960778, -0.26274514,  0.9137254 ],
+         [ 0.19215679,  0.29411757,  0.50588226],
+         [-0.8352941 , -0.19215691, -0.90588236],
+         ...,
+         [ 0.6156862 , -0.69411767, -0.84313726],
+         [ 0.52156854, -0.4039216 ,  0.7725489 ],
+         [ 0.60784304,  0.05882347, -0.5921569 ]],
+
+        [[ 0.41176462,  0.5294117 ,  0.7254901 ],
+         [ 0.00392151,  0.13725483,  0.27058816],
+         [ 0.6392156 ,  0.2156862 ,  0.75686264],
+         ...,
+         [ 0.5607842 ,  0.9450979 , -0.9529412 ],
+         [-0.1686275 , -0.33333337,  0.34901953],
+         [ 0.6235293 ,  0.835294  ,  0.490196  ]]]], dtype=float32), 'right_wrist_0_rgb': Array([[[[-0.3803922 ,  0.8980391 ,  0.9215685 ],
+         [-0.85882354,  0.9764705 , -0.8509804 ],
+         [ 0.9215685 ,  0.3019607 , -0.9764706 ],
+         ...,
+         [ 0.56862736, -0.7411765 , -0.8352941 ],
+         [ 0.2156862 , -0.05098045,  0.01960778],
+         [-0.28627455,  0.46666658,  0.8588234 ]],
+
+        [[ 0.30980384,  0.7490195 , -0.21568632],
+         [ 0.35686266, -0.67058825,  0.95294106],
+         [-0.99215686, -0.2941177 , -0.12941182],
+         ...,
+         [ 0.02745092, -0.92156863,  0.32549012],
+         [-0.5058824 ,  0.78039205, -0.13725495],
+         [-0.4666667 , -0.41960788,  0.56862736]],
+
+        [[ 0.7254901 ,  0.8509803 , -0.4431373 ],
+         [ 0.9137254 , -0.96862745, -0.6       ],
+         [-0.43529415, -0.14509809, -0.19215691],
+         ...,
+         [-0.9372549 ,  0.52156854,  0.81960773],
+         [ 0.13725483, -0.5058824 ,  0.835294  ],
+         [ 0.4274509 , -0.01176476, -0.81960785]],
+
+        ...,
+
+        [[-0.19215691,  0.28627443, -0.37254906],
+         [-0.9843137 ,  0.07450974,  0.71764696],
+         [ 0.26274502, -0.8117647 ,  0.96862733],
+         ...,
+         [ 0.7490195 ,  0.6235293 ,  0.34901953],
+         [-0.73333335, -0.8509804 , -0.49803925],
+         [-0.21568632,  0.09019601,  0.16078424]],
+
+        [[-0.10588241, -0.7019608 , -0.84313726],
+         [-0.20000005,  0.1294117 , -0.30196083],
+         [ 0.10588229,  0.24705875,  0.5764705 ],
+         ...,
+         [ 0.04313719, -0.27058828,  0.15294111],
+         [ 0.38039207,  0.26274502, -0.7019608 ],
+         [ 0.11372542, -0.04313731, -0.62352943]],
+
+        [[ 0.56862736,  0.1294117 ,  0.3019607 ],
+         [ 0.7725489 , -0.79607844, -0.2313726 ],
+         [ 0.59215677,  0.0666666 ,  0.30980384],
+         ...,
+         [-0.7411765 , -0.5058824 ,  0.49803913],
+         [ 0.81960773,  0.5137254 , -0.09019613],
+         [-0.17647064, -0.39607847, -0.73333335]]]], dtype=float32)}
+	key: <class 'str'> image_mask
+	value: <class 'dict'> {'base_0_rgb': Array([ True], dtype=bool), 'left_wrist_0_rgb': Array([ True], dtype=bool), 'right_wrist_0_rgb': Array([ True], dtype=bool)}
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: False
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=1.000 ===
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=0.500 ===
+post processing observation
+	key: <class 'str'> state
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[82.63553   -5.4848194  0.2133592 22.186712   9.838145  12.228343
+   1.8992877  9.869079  -4.7686777 -0.531165   4.588016   4.3002663
+   2.330531   1.5261674  0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.         0.         0.         0.         0.
+   0.         0.       ]]
+	key: <class 'str'> tokenized_prompt
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[   2 1042 2775  108    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0    0    0    0    0    0    0    0    0
+     0    0    0    0    0    0]]
+	key: <class 'str'> tokenized_prompt_mask
+	value: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> [[ True  True  True  True False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False
+  False False False False False False False False False False False False]]
+	key: <class 'str'> token_ar_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> token_loss_mask
+	value: <class 'NoneType'> None
+	key: <class 'str'> image
+	value: <class 'dict'> {'base_0_rgb': Array([[[[-0.05882359,  0.31764698,  0.7098038 ],
+         [-0.23921573,  0.50588226, -0.7176471 ],
+         [ 0.00392151,  0.09019601, -0.04313731],
+         ...,
+         [ 0.80392146,  0.02745092, -0.05098045],
+         [ 0.01960778,  0.19999993, -0.39607847],
+         [-0.427451  ,  0.45882344, -0.8666667 ]],
+
+        [[ 0.34901953,  0.23921561,  0.9843136 ],
+         [ 0.5764705 ,  0.7960783 ,  0.05882347],
+         [ 0.16862738, -0.4039216 , -0.8666667 ],
+         ...,
+         [ 0.835294  ,  0.490196  ,  0.9137254 ],
+         [ 0.31764698, -0.56078434, -0.13725495],
+         [-0.34901965,  0.5137254 , -0.34901965]],
+
+        [[-0.02745104, -0.43529415, -0.14509809],
+         [-0.16078436, -0.9764706 ,  0.9843136 ],
+         [ 0.9607842 ,  0.10588229, -0.7490196 ],
+         ...,
+         [ 0.9450979 ,  0.662745  ,  0.7882352 ],
+         [ 0.5137254 ,  0.73333323, -0.92156863],
+         [-0.254902  ,  0.3411764 ,  0.13725483]],
+
+        ...,
+
+        [[ 0.3411764 , -0.48235297, -0.5294118 ],
+         [-0.02745104,  0.5607842 , -0.88235295],
+         [ 0.56862736,  0.86666656,  0.59215677],
+         ...,
+         [-0.43529415, -0.0196079 ,  0.71764696],
+         [-0.21568632,  0.3882352 ,  0.01176465],
+         [-0.45098042, -0.18431377, -0.8117647 ]],
+
+        [[-0.3411765 , -0.03529418, -0.7254902 ],
+         [-0.427451  ,  0.3882352 ,  0.8588234 ],
+         [-0.54509807, -0.94509804,  0.8745097 ],
+         ...,
+         [ 0.1294117 ,  0.58431363,  0.6235293 ],
+         [ 0.6862744 , -0.4666667 , -0.32549024],
+         [-0.99215686,  0.8117646 ,  0.4509803 ]],
+
+        [[-0.23921573,  0.09803915,  0.90588224],
+         [-0.41960788,  0.60784304,  0.7882352 ],
+         [ 0.6392156 ,  0.29411757, -0.6392157 ],
+         ...,
+         [-0.92941177,  0.8823528 ,  0.08235288],
+         [-0.05882359,  0.7725489 , -0.5137255 ],
+         [-0.84313726,  0.16862738, -0.4901961 ]]]], dtype=float32), 'left_wrist_0_rgb': Array([[[[-0.20784318,  0.37254894,  0.31764698],
+         [-0.75686276,  0.3411764 ,  0.9607842 ],
+         [ 0.44313717, -0.20784318,  0.31764698],
+         ...,
+         [ 0.8980391 , -0.92156863,  0.23137248],
+         [-0.37254906,  0.29411757,  0.81960773],
+         [-0.54509807, -0.79607844,  0.6235293 ]],
+
+        [[-0.8745098 , -0.5294118 , -0.9137255 ],
+         [-0.7882353 , -0.09019613, -0.8901961 ],
+         [ 0.11372542, -0.81960785, -0.94509804],
+         ...,
+         [ 0.11372542, -1.        , -0.67058825],
+         [ 0.24705875,  0.19999993, -0.79607844],
+         [-0.28627455,  0.96862733,  0.6862744 ]],
+
+        [[-0.96862745,  0.43529403, -0.05098045],
+         [ 0.5607842 ,  0.96862733,  0.84313715],
+         [-0.5058824 , -0.67058825, -0.8117647 ],
+         ...,
+         [-0.32549024, -0.12156868, -0.9607843 ],
+         [-0.0196079 ,  0.41176462,  0.67058814],
+         [ 0.09019601,  0.5137254 , -0.12941182]],
+
+        ...,
+
+        [[ 0.47450972,  0.99215674, -0.75686276],
+         [-0.07450986, -1.        , -0.8509804 ],
+         [ 0.7725489 , -0.9372549 ,  0.6392156 ],
+         ...,
+         [-0.20000005, -0.12941182,  0.5764705 ],
+         [ 0.95294106,  0.80392146,  0.7960783 ],
+         [-0.9372549 ,  0.8588234 , -0.5294118 ]],
+
+        [[-0.5921569 , -0.7882353 ,  0.5999999 ],
+         [-0.81960785,  0.7725489 ,  0.9215685 ],
+         [-0.28627455,  0.63137245,  0.4274509 ],
+         ...,
+         [ 0.6470587 ,  0.5607842 ,  0.23137248],
+         [-0.7176471 ,  0.9764705 , -0.8666667 ],
+         [ 0.7647058 ,  0.8980391 , -0.45098042]],
+
+        [[ 0.09019601,  0.86666656, -0.04313731],
+         [-0.13725495,  0.04313719, -0.47450984],
+         [ 0.9137254 , -0.45882356,  0.15294111],
+         ...,
+         [-0.85882354, -0.20784318, -0.37254906],
+         [ 0.47450972,  0.3019607 ,  0.07450974],
+         [-0.654902  , -0.827451  ,  0.80392146]]]], dtype=float32), 'right_wrist_0_rgb': Array([[[[ 0.7490195 ,  0.59215677,  0.3411764 ],
+         [-0.5372549 ,  0.19215679,  0.7019607 ],
+         [ 0.29411757, -0.21568632,  0.27058816],
+         ...,
+         [ 0.3647058 , -0.8980392 ,  0.69411755],
+         [ 0.8980391 , -0.3803922 ,  0.05098033],
+         [-0.11372554,  0.3882352 , -0.4039216 ]],
+
+        [[ 0.3411764 , -0.39607847,  0.69411755],
+         [ 0.29411757, -0.12156868, -0.8039216 ],
+         [ 0.7098038 , -0.13725495, -0.9843137 ],
+         ...,
+         [-0.13725495, -0.11372554,  0.80392146],
+         [-0.5058824 ,  0.38039207,  0.6235293 ],
+         [-0.7019608 , -0.75686276, -0.4901961 ]],
+
+        [[-0.10588241,  0.28627443, -0.36470592],
+         [-0.8509804 ,  0.13725483,  0.2549019 ],
+         [ 0.89019597, -0.21568632,  0.5372548 ],
+         ...,
+         [ 0.22352934, -0.2313726 , -0.09019613],
+         [ 0.22352934,  0.5294117 ,  0.32549012],
+         [-0.6627451 , -0.18431377,  0.01176465]],
+
+        ...,
+
+        [[ 0.43529403,  0.59215677, -0.33333337],
+         [ 0.75686264, -0.21568632, -0.01176476],
+         [-0.8039216 ,  0.16862738, -0.9607843 ],
+         ...,
+         [-0.19215691, -0.58431375,  0.9843136 ],
+         [-0.9137255 , -0.6       ,  0.60784304],
+         [ 0.32549012,  0.05098033,  0.1294117 ]],
+
+        [[-0.81960785, -0.05882359, -0.84313726],
+         [ 0.73333323, -0.6156863 ,  0.2156862 ],
+         [ 0.23921561,  0.01960778,  0.3647058 ],
+         ...,
+         [-0.34901965, -0.12941182,  0.3019607 ],
+         [-0.16078436, -0.5372549 , -0.14509809],
+         [ 0.74117637, -0.26274514,  0.69411755]],
+
+        [[ 0.74117637,  0.9450979 ,  0.34901953],
+         [-0.7019608 ,  0.0666666 ,  0.95294106],
+         [ 0.5294117 ,  0.37254894, -0.27843142],
+         ...,
+         [-0.41176474, -0.9607843 ,  0.5137254 ],
+         [-0.85882354, -0.654902  ,  0.16862738],
+         [ 0.6392156 , -0.20784318,  0.05882347]]]], dtype=float32)}
+	key: <class 'str'> image_mask
+	value: <class 'dict'> {'base_0_rgb': Array([ True], dtype=bool), 'left_wrist_0_rgb': Array([ True], dtype=bool), 'right_wrist_0_rgb': Array([ True], dtype=bool)}
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: False
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,816,816])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache is None
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=1.000 ===
+Current KV cache K shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Current KV cache V shape: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+full_attn_mask shape: (Array(1, dtype=int32), Array(51, dtype=int32), Array(867, dtype=int32))
+[GEMMA] method for getting kvcache
+[GEMMA] kv_cache provided: True
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+Returned_kv_cache seq_len: 867
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+[GEMMA] attention method
+[GEMMA] attention attn_mask Traced<ShapedArray(bool[1,1,51,867])>with<DynamicJaxprTrace>
+[GEMMA] attention kv_cache shapes: k=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32)), v=(Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), Array(256, dtype=int32))
+=== Step at time=0.500 ===
