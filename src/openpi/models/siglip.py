@@ -23,6 +23,10 @@ import numpy as np
 
 import openpi.training.sharding as sharding
 
+import logging
+
+logger = logging.getLogger("siglip")
+
 
 def posemb_sincos_2d(h, w, width, temperature=10_000.0, dtype=jnp.float32):
     """Follows the MoCo v3 logic."""
@@ -38,6 +42,10 @@ def posemb_sincos_2d(h, w, width, temperature=10_000.0, dtype=jnp.float32):
 
 
 def get_posemb(self, typ, seqshape, width, name, dtype=jnp.float32):
+    '''
+    returns a positional embedding tensor, choosing the implementation based on typ
+    in Module called with "learn"
+    '''
     if typ == "learn":
         return self.param(
             name,
@@ -206,6 +214,13 @@ class _Module(nn.Module):
 
     @nn.compact
     def __call__(self, image, *, train=False):
+        logger.info("img Module called")
+        '''
+        this is a Vision Transformer (ViT/SigLIP-style) forward pass
+            that turns an image into a sequence of patch tokens, runs a transformer
+            encoder over them, and then optionally pools / projects / produces
+            logits
+        '''
         out = {}
 
         # Kevin edit: do patch extraction and posemb in float32,

@@ -2,7 +2,9 @@ import logging
 
 import einops
 import flax.nnx as nnx
-import flax.nnx.bridge as nnx_bridge
+import flax.nnx.bridge as nnx_bridge # bridge allows nnx modules through jax transforms
+# Flax is a neural network library for JAX and nnx is the api
+# π0: uses Flax to build the transformer, vision encoder, etc.
 import jax
 import jax.numpy as jnp
 from typing_extensions import override
@@ -45,7 +47,7 @@ def make_attn_mask(input_mask, mask_ar):
 
 
 @at.typecheck
-def posemb_sincos(
+def posemb_sincos( # turns timestep into embedding
     pos: at.Real[at.Array, " b"], embedding_dim: int, min_period: float, max_period: float
 ) -> at.Float[at.Array, "b {embedding_dim}"]:
     """Computes sine-cosine positional embedding vectors for scalar positions."""
@@ -88,16 +90,29 @@ class Pi0(_model.BaseModel):
             )
         )
         img.lazy_init(next(iter(config.fake_obs().images.values())), train=False, rngs=rngs)
-        self.PaliGemma = nnx.Dict(llm=llm, img=img)
+        self.PaliGemma = nnx.Dict(llm=llm, img=img) # PaliGemma is a dictionary hold two models, an LLM and vision encode
+        # PaliGemma is a VLM but its made of an LLM (Gemma) and vision encoder (SigLIP)
+        # PaliGemma.img is the vision encoder forward pass. It takes an image tensor and returns image token embeddings
+        
+        # Linear is a matrix multiply + bias
+        
         self.action_in_proj = nnx.Linear(config.action_dim, action_expert_config.width, rngs=rngs)
+        # for projecting the action tokens, (turns each action chunk into a token embedding)
+        # [B, H, action_dim] → [B, H, width]
+
         if config.pi05:
             self.time_mlp_in = nnx.Linear(action_expert_config.width, action_expert_config.width, rngs=rngs)
             self.time_mlp_out = nnx.Linear(action_expert_config.width, action_expert_config.width, rngs=rngs)
         else:
             self.state_proj = nnx.Linear(config.action_dim, action_expert_config.width, rngs=rngs)
+            # projects robot state into width 
+
+            # these are called mlp because they're used like Linear + activation + Linear in the code
             self.action_time_mlp_in = nnx.Linear(2 * action_expert_config.width, action_expert_config.width, rngs=rngs)
             self.action_time_mlp_out = nnx.Linear(action_expert_config.width, action_expert_config.width, rngs=rngs)
+
         self.action_out_proj = nnx.Linear(action_expert_config.width, config.action_dim, rngs=rngs)
+        # Maps the transformer’s output back into action space.
 
         # This attribute gets automatically set by model.train() and model.eval().
         self.deterministic = True
@@ -106,11 +121,17 @@ class Pi0(_model.BaseModel):
     def embed_prefix(
         self, obs: _model.Observation
     ) -> tuple[at.Float[at.Array, "b s emb"], at.Bool[at.Array, "b s"], at.Bool[at.Array, " s"]]:
+        '''
+        high leve: Embed all observation context (images + language) 
+        into a single prefix token sequence.
+        '''
         input_mask = []
         ar_mask = []
         tokens = []
         # embed images
         for name in obs.images:
+            # vision encoder on the images from observation
+            # runs through sigLIP model
             image_tokens, _ = self.PaliGemma.img(obs.images[name], train=False)
 
             tokens.append(image_tokens)
@@ -148,6 +169,7 @@ class Pi0(_model.BaseModel):
         input_mask = []
         ar_mask = []
         tokens = []
+
         if not self.pi05:
             # add a single state token
             state_token = self.state_proj(obs.state)[:, None, :]
@@ -155,25 +177,30 @@ class Pi0(_model.BaseModel):
             input_mask.append(jnp.ones((obs.state.shape[0], 1), dtype=jnp.bool_))
             # image/language inputs do not attend to state or actions
             ar_mask += [True]
+            # True = barrier: prefix tokens CANNOT attend past this point
+            # This ensures images/text don't attend to state/actions
 
-        action_tokens = self.action_in_proj(noisy_actions)
+        action_tokens = self.action_in_proj(noisy_actions) # 1 Linear layer to convert noisy actions into tokens
+
         # embed timestep using sine-cosine positional encoding with sensitivity in the range [0, 1]
         time_emb = posemb_sincos(timestep, self.action_in_proj.out_features, min_period=4e-3, max_period=4.0)
         if self.pi05:
             # time MLP (for adaRMS)
-            time_emb = self.time_mlp_in(time_emb)
-            time_emb = nnx.swish(time_emb)
-            time_emb = self.time_mlp_out(time_emb)
-            time_emb = nnx.swish(time_emb)
-            action_expert_tokens = action_tokens
+            time_emb = self.time_mlp_in(time_emb) # Linear layer
+            time_emb = nnx.swish(time_emb) # activation layer
+            time_emb = self.time_mlp_out(time_emb) # linear layer
+            time_emb = nnx.swish(time_emb) # activation layer
+            action_expert_tokens = action_tokens 
             adarms_cond = time_emb
         else:
             # mix timestep + action information using an MLP (no adaRMS)
             time_tokens = einops.repeat(time_emb, "b emb -> b s emb", s=self.action_horizon)
+            # time_emb is repeated to match the action sequence length (action_horizon)
+
             action_time_tokens = jnp.concatenate([action_tokens, time_tokens], axis=-1)
-            action_time_tokens = self.action_time_mlp_in(action_time_tokens)
-            action_time_tokens = nnx.swish(action_time_tokens)
-            action_time_tokens = self.action_time_mlp_out(action_time_tokens)
+            action_time_tokens = self.action_time_mlp_in(action_time_tokens) # linear layer
+            action_time_tokens = nnx.swish(action_time_tokens) # activation layer
+            action_time_tokens = self.action_time_mlp_out(action_time_tokens) # linear layer
             action_expert_tokens = action_time_tokens
             adarms_cond = None
         tokens.append(action_expert_tokens)
@@ -222,8 +249,20 @@ class Pi0(_model.BaseModel):
         num_steps: int | at.Int[at.Array, ""] = 10,
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
-        with jax.named_scope("preprocess_observation"):
+        with jax.named_scope("preprocess_observation", observation):
+            logger.info("what is observation")
+            ob_dict = observation.to_dict()
+            for key,val in ob_dict.items():
+                logger.info("\tkey: ", type(key), key)
+                logger.info("\tvalue: ", type(val), val, "\n")
+
+            # observation contains 
             observation = _model.preprocess_observation(None, observation, train=False)
+            logger.info("post processing observation")
+            ob_dict = observation.to_dict()
+            for key,val in ob_dict.items():
+                logger.info("\tkey: ", type(key), key)
+                logger.info("\tvalue: ", type(val), val, "\n")
 
         # note that we use the convention more common in diffusion literature, where t=1 is noise and t=0 is the target
         # distribution. yes, this is the opposite of the pi0 paper, and I'm sorry.
@@ -236,19 +275,27 @@ class Pi0(_model.BaseModel):
         # first fill KV cache with a forward pass of the prefix
         with jax.named_scope("embed_prefix"):
             prefix_tokens, prefix_mask, prefix_ar_mask = self.embed_prefix(observation)
+            # Creates a full attention mask
+            # prefix tokens contains both embeddings of images and prompt embeddings
         
         
         with jax.named_scope("prefix_kv_cache_llm"):
             prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
-            positions = jnp.cumsum(prefix_mask, axis=1) - 1
+            positions = jnp.cumsum(prefix_mask, axis=1) - 1 
             _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
+            logger.info("KV_cache", kv_cache)
 
         def step(carry):
             x_t, time = carry
+            timestep_print = jnp.broadcast_to(time, batch_size)
             with jax.named_scope("embed_suffix"):
                 suffix_tokens, suffix_mask, suffix_ar_mask, adarms_cond = self.embed_suffix(
-                    observation, x_t, jnp.broadcast_to(time, batch_size)
+                    observation, x_t, timestep_print
                 )
+                logger.info("timestep", timestep_print)
+
+                # The time step value is broadcasted to match the batch size so that every
+                #  example in the batch gets the same timestep.
 
             # `suffix_attn_mask` is shape (b, suffix_len, suffix_len) indicating how the suffix tokens can attend to each
             # other

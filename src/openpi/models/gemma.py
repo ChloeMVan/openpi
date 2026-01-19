@@ -38,6 +38,10 @@ import openpi.models.lora as lora
 import openpi.shared.array_typing as at
 import openpi.training.sharding as sharding
 
+import logging
+
+logger = logging.getLogger("gemma")
+
 PALIGEMMA_VOCAB_SIZE = 257_152
 
 
@@ -146,6 +150,7 @@ class Embedder(nn.Module):
         )
 
     def encode(self, x):
+        logger.info("Embedder called for encode")
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
         return x
@@ -362,18 +367,18 @@ class Module(nn.Module):
             static_argnums=(5,),  # 0=self, 6=deterministic
             policy=jax.checkpoint_policies.nothing_saveable,
         )
-        self.layers = nn.scan(
-            block_cls,
-            variable_axes={"params": 0},
-            split_rngs={"params": True, "dropout": True},
+        self.layers = nn.scan( # creates a stack of transformer blocks
+            block_cls,                    # The transformer block class to repeat
+            variable_axes={"params": 0},  # Parameters are different for each layer
+            split_rngs={"params": True, "dropout": True},  # Different random keys per layer
             in_axes=(
-                0,
-                nn.broadcast,
-                nn.broadcast,
-                nn.broadcast,
-                nn.broadcast,
-            ),  # 0=kv_cache, 1=positions, 2=mask, 3=adarms_cond, 4=deterministic
-            length=self.configs[0].depth,
+                0,           # kv_cache: varies per layer (layer 0, layer 1, etc.)
+                nn.broadcast,# positions: same for all layers  
+                nn.broadcast,# mask: same for all layers
+                nn.broadcast,# adarms_cond: same for all layers  
+                nn.broadcast,# deterministic: same for all layers
+            ),
+            length=self.configs[0].depth,  # Number of layers (e.g., 18 for Gemma)
         )(
             configs=self.configs,
             dropout=self.dropout,
@@ -383,6 +388,7 @@ class Module(nn.Module):
 
     @at.typecheck
     def embed(self, tokens: at.Int[at.Array, "b t"]) -> at.Float[at.Array, "b t d"]:
+        logger.info("gemma embed called")
         return self.embedder.encode(tokens).astype(self.embed_dtype)
 
     @at.typecheck
@@ -397,18 +403,20 @@ class Module(nn.Module):
         kv_cache: KVCache | None = None,
         deterministic: bool = True,
     ) -> tuple[Sequence[at.Float[at.Array, "b _t _d"] | None], KVCache]:
-        embedded = jax.tree.map(lambda e: e.astype(self.embed_dtype), embedded)
+        logger.info("gemma method for getting kvcache")
+        embedded = jax.tree.map(lambda e: e.astype(self.embed_dtype), embedded) # conversion
         mask = jnp.asarray(mask)[:, None, :, :]
-        if adarms_cond is None:
+        if adarms_cond is None: # AdaRMS is a normalization technique. We don't use it for the prefix. (the prefix being the observation)
             adarms_cond = [None] * len(self.configs)
 
         embedded, kv_cache = self.layers(embedded, kv_cache, positions, mask, adarms_cond, deterministic)
+        # run through transformer layers
 
         assert all(e.dtype == jnp.dtype(self.embed_dtype) for e in embedded if e is not None)
 
         return [
-            f(e, a)[0] if e is not None else e for f, e, a in zip(self.final_norms, embedded, adarms_cond, strict=True)
-        ], kv_cache
+            f(e, a)[0] if e is not None else e for f, e, a in zip(self.final_norms, embedded, adarms_cond, strict=True) # output of PaliGemma
+        ], kv_cache # kv cache created from PaliGemma
 
     def init(self, use_adarms: Sequence[bool]):
         """Convenience method for initializing all parameters, necessary due to the quirks of linen."""
