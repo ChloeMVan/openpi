@@ -286,7 +286,7 @@ class Pi0(_model.BaseModel):
             positions = jnp.cumsum(prefix_mask, axis=1) - 1 
             _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
             jax.debug.print("KV_cache shapes: {} {}", kv_cache[0].shape, kv_cache[1].shape)
-            jax.debug.print("KV_cache type: {} {}", type(kv_cache[0]), type(kv_cache[1]))
+            jax.debug.print("KV_cache type: {} {}\n", type(kv_cache[0]), type(kv_cache[1]))
 
             # To see actual values:
             # jax.debug.print("KV_cache[0][0,0,:5,0,:5]: {}", kv_cache[0][0,0,:5,0,:5])
