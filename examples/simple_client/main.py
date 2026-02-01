@@ -152,18 +152,32 @@ def main(args: Args) -> None:
 
 
 def _random_observation_aloha() -> dict:
-    return {
+    """
+    Generate random observation with variable number of wrist cameras.
+    
+    Args:
+        num_extra_wrist_cams: Number of extra wrist camera pairs to include
+    """
+    observation = {
         "state": np.ones((14,)),
         "images": {
             "cam_high": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_low": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_left_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_right_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            "cam_right_wrist_1": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            "cam_left_wrist_1": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
         },
         "prompt": "do something",
     }
+    
+    # Add extra wrist cameras
+    num_extra_wrist_cams = 0
+    for i in range(1, num_extra_wrist_cams + 1):
+        observation["images"].update({
+            f"cam_left_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            f"cam_right_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+        })
+    
+    return observation
 
 
 def _random_observation_droid() -> dict:

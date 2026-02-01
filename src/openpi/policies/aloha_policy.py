@@ -37,7 +37,16 @@ class AlohaInputs(transforms.DataTransformFn):
 
     # The expected cameras names. All input cameras must be in this set. Missing cameras will be
     # replaced with black images and the corresponding `image_mask` will be set to False.
-    EXPECTED_CAMERAS: ClassVar[tuple[str, ...]] = ("cam_high", "cam_low", "cam_left_wrist", "cam_left_wrist_1", "cam_right_wrist", "cam_right_wrist_1")
+    num_extra_wrist_cams = 0
+    BASE_CAMERAS = ("cam_high", "cam_low", "cam_left_wrist", "cam_right_wrist")
+    expected_cameras = list(BASE_CAMERAS)
+    for i in range(1, num_extra_wrist_cams + 1):
+        expected_cameras.extend([
+            f"cam_left_wrist_{i}",
+            f"cam_right_wrist_{i}"
+        ])
+    EXPECTED_CAMERAS = tuple(expected_cameras)
+
 
     def __call__(self, data: dict) -> dict:
         data = _decode_aloha(data, adapt_to_pi=self.adapt_to_pi)
@@ -45,6 +54,7 @@ class AlohaInputs(transforms.DataTransformFn):
         in_images = data["images"]
         if set(in_images) - set(self.EXPECTED_CAMERAS):
             raise ValueError(f"Expected images to contain {self.EXPECTED_CAMERAS}, got {tuple(in_images)}")
+        print("in_images", in_images)
 
         # Assume that base image always exists.
         base_image = in_images["cam_high"]
@@ -60,8 +70,8 @@ class AlohaInputs(transforms.DataTransformFn):
         extra_image_names = {
             "left_wrist_0_rgb": "cam_left_wrist",
             "right_wrist_0_rgb": "cam_right_wrist",
-            "left_wrist_1_rgb": "cam_left_wrist_1",
-            "right_wrist_1_rgb": "cam_right_wrist_1",
+            # "left_wrist_1_rgb": "cam_left_wrist_1",
+            # "right_wrist_1_rgb": "cam_right_wrist_1",
         }
         for dest, source in extra_image_names.items():
             if source in in_images:
