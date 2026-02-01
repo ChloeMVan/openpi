@@ -150,7 +150,7 @@ class Embedder(nn.Module):
         )
 
     def encode(self, x):
-        logger.info("Embedder called for encode")
+        # logger.info("Embedder called for encode")
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
         return x
@@ -419,7 +419,7 @@ class Module(nn.Module):
 
     @at.typecheck
     def embed(self, tokens: at.Int[at.Array, "b t"]) -> at.Float[at.Array, "b t d"]:
-        logger.info("gemma embed called")
+        # logger.info("gemma embed called")
         return self.embedder.encode(tokens).astype(self.embed_dtype)
 
     @at.typecheck
