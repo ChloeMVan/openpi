@@ -271,10 +271,10 @@ class Pi0(_model.BaseModel):
                 token_loss_mask=observation.token_loss_mask,
             )
             '''
-            # jax.debug.print("post processing observation")
+            jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            # for key,val in ob_dict.items():
-            #     jax.debug.print("\tkey: {} {}", type(key), 0)
+            for key,val in ob_dict.items():
+                jax.debug.print("\tkey: {} {}", type(key), 0)
             #     jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
