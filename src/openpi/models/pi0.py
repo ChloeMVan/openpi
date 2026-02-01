@@ -122,7 +122,7 @@ class Pi0(_model.BaseModel):
         self, obs: _model.Observation
     ) -> tuple[at.Float[at.Array, "b s emb"], at.Bool[at.Array, "b s"], at.Bool[at.Array, " s"]]:
         '''
-        high leve: Embed all observation context (images + language) 
+        high level: Embed all observation context (images + language) 
         into a single prefix token sequence.
         '''
         input_mask = []
@@ -299,6 +299,19 @@ class Pi0(_model.BaseModel):
             _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
             jax.debug.print("KV_cache shapes: {} {}", kv_cache[0].shape, kv_cache[1].shape)
             jax.debug.print("KV_cache type: {} {}\n", type(kv_cache[0]), type(kv_cache[1]))
+            '''
+            PaliGemma (pi0 paper): {width=2048, depth=18, mlp dim=16,384, num heads=18, num kv heads=1, head dim=256}
+
+            [layers, batch, sequence_length, num_kv_heads, head_dim]
+
+            KV_cache shapes: (Array(18, dtype=int32), Array(1, dtype=int32), Array(816, dtype=int32), 
+                Array(1, dtype=int32), Array(256, dtype=int32)) (Array(18, dtype=int32), 
+                Array(1, dtype=int32), Array(816, dtype=int32), Array(1, dtype=int32), 
+                Array(256, dtype=int32))
+                
+            KV_cache type: <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'> 
+                <class 'jax._src.interpreters.partial_eval.DynamicJaxprTracer'>
+            '''
 
             # To see actual values:
             # jax.debug.print("KV_cache[0][0,0,:5,0,:5]: {}", kv_cache[0][0,0,:5,0,:5])

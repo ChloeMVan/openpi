@@ -131,6 +131,7 @@ def main(args: Args) -> None:
 
     # Send a few observations to make sure the model is loaded.
     for _ in range(2):
+        # print()
         policy.infer(obs_fn())
 
     timing_recorder = TimingRecorder()
@@ -158,6 +159,8 @@ def _random_observation_aloha() -> dict:
             "cam_low": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_left_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             "cam_right_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            "cam_right_wrist_1": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            "cam_left_wrist_1": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
         },
         "prompt": "do something",
     }

@@ -232,6 +232,14 @@ class Attention(nn.Module):
             # tokens (PaliGemma observation tokens). New tokens (from action expert)
             # have their K/V concatenated to the end of this cache.
 
+            '''
+            output:
+            [GEMMA] attention before keys Traced<ShapedArray(bfloat16[1,51,1,256])>with<DynamicJaxprTrace>
+            [GEMMA] attention before values Traced<ShapedArray(bfloat16[1,51,1,256])>with<DynamicJaxprTrace>
+            [GEMMA] attention after keys Traced<ShapedArray(bfloat16[1,867,1,256])>with<DynamicJaxprTrace>
+            [GEMMA] attention after values Traced<ShapedArray(bfloat16[1,867,1,256])>with<DynamicJaxprTrace>
+            '''
+
         q = einops.rearrange(q, "B T (K G) H -> B T K G H", K=self.configs[0].num_kv_heads)
         logits = jnp.einsum("BTKGH,BSKH->BKGTS", q, k, preferred_element_type=jnp.float32)
         # The query (from action expert) computes attention scores with all keys in k,
