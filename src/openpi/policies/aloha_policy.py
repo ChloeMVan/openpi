@@ -37,7 +37,7 @@ class AlohaInputs(transforms.DataTransformFn):
 
     # The expected cameras names. All input cameras must be in this set. Missing cameras will be
     # replaced with black images and the corresponding `image_mask` will be set to False.
-    num_extra_wrist_cams = 1
+    num_extra_wrist_cams = 2
     BASE_CAMERAS = ("cam_high", "cam_low", "cam_left_wrist", "cam_right_wrist")
     expected_cameras = list(BASE_CAMERAS)
     for i in range(1, num_extra_wrist_cams + 1):
@@ -79,7 +79,7 @@ class AlohaInputs(transforms.DataTransformFn):
                 f"left_wrist_{i}_rgb": f"cam_left_wrist_{i}",
                 f"right_wrist_{i}_rgb": f"cam_right_wrist_{i}",
             })
-            
+
         for dest, source in extra_image_names.items():
             if source in in_images:
                 images[dest] = in_images[source]
