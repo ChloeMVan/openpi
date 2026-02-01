@@ -214,7 +214,7 @@ class _Module(nn.Module):
 
     @nn.compact
     def __call__(self, image, *, train=False):
-        logger.info("img Module called")
+        # logger.info("img Module called")
         '''
         this is a Vision Transformer (ViT/SigLIP-style) forward pass
             that turns an image into a sequence of patch tokens, runs a transformer

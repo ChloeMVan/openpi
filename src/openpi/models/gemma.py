@@ -167,13 +167,14 @@ class Attention(nn.Module):
 
     @nn.compact
     def __call__(self, xs, positions, attn_mask, kv_cache):
-        jax.debug.print("[GEMMA] attention method")
-        jax.debug.print(f"[GEMMA] attention attn_mask {attn_mask}")
+        # jax.debug.print("[GEMMA] attention method")
+        # jax.debug.print(f"[GEMMA] attention attn_mask {attn_mask}")
         if kv_cache is not None:
             cache_k, cache_v = kv_cache
-            jax.debug.print("[GEMMA] attention kv_cache shapes: k={}, v={}", cache_k.shape, cache_v.shape)
+            # jax.debug.print("[GEMMA] attention kv_cache shapes: k={}, v={}", cache_k.shape, cache_v.shape)
         else:
-            jax.debug.print("[GEMMA] attention kv_cache is None")
+            # jax.debug.print("[GEMMA] attention kv_cache is None")
+            pass
         # all experts must share the same head dim, num heads, and num kv heads for self-attention to work
         assert all(config.head_dim == self.configs[0].head_dim for config in self.configs)
         assert all(config.num_heads == self.configs[0].num_heads for config in self.configs)
@@ -222,12 +223,12 @@ class Attention(nn.Module):
 
         if kv_cache is not None:
             cache_k, cache_v = kv_cache
-            jax.debug.print(f"[GEMMA] attention before keys {k}")
-            jax.debug.print(f"[GEMMA] attention before values {v}")
+            # jax.debug.print(f"[GEMMA] attention before keys {k}")
+            # jax.debug.print(f"[GEMMA] attention before values {v}")
             k = jnp.concatenate([cache_k, k], axis=1)
             v = jnp.concatenate([cache_v, v], axis=1)
-            jax.debug.print(f"[GEMMA] attention after keys {k}")
-            jax.debug.print(f"[GEMMA] attention after values {v}")
+            # jax.debug.print(f"[GEMMA] attention after keys {k}")
+            # jax.debug.print(f"[GEMMA] attention after values {v}")
             # The kv_cache contains previously computed keys/values from earlier 
             # tokens (PaliGemma observation tokens). New tokens (from action expert)
             # have their K/V concatenated to the end of this cache.
@@ -433,8 +434,8 @@ class Module(nn.Module):
         kv_cache: KVCache | None = None,
         deterministic: bool = True,
     ) -> tuple[Sequence[at.Float[at.Array, "b _t _d"] | None], KVCache]:
-        jax.debug.print("[GEMMA] method for getting kvcache")
-        jax.debug.print("[GEMMA] kv_cache provided: {}", kv_cache is not None)
+        # jax.debug.print("[GEMMA] method for getting kvcache")
+        # jax.debug.print("[GEMMA] kv_cache provided: {}", kv_cache is not None)
         embedded = jax.tree.map(lambda e: e.astype(self.embed_dtype), embedded) # conversion
         mask = jnp.asarray(mask)[:, None, :, :]
         if adarms_cond is None: # AdaRMS is a normalization technique. We don't use it for the prefix. (the prefix being the observation)

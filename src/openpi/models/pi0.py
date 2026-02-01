@@ -246,15 +246,15 @@ class Pi0(_model.BaseModel):
         rng: at.KeyArrayLike,
         observation: _model.Observation,
         *,
-        num_steps: int | at.Int[at.Array, ""] = 2, # changed from 10
+        num_steps: int | at.Int[at.Array, ""] = 10, # changed from 10
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
         with jax.named_scope("preprocess_observation"):
-            jax.debug.print("post processing observation")
+            # jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            for key,val in ob_dict.items():
-                jax.debug.print("\tkey: {} {}", type(key), 0)
-                jax.debug.print("\tvalue: {} {}", type(val), 0)
+            # for key,val in ob_dict.items():
+                # jax.debug.print("\tkey: {} {}", type(key), 0)
+                # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
             # observation contains 
@@ -271,11 +271,11 @@ class Pi0(_model.BaseModel):
                 token_loss_mask=observation.token_loss_mask,
             )
             '''
-            jax.debug.print("post processing observation")
+            # jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            for key,val in ob_dict.items():
-                jax.debug.print("\tkey: {} {}", type(key), 0)
-                jax.debug.print("\tvalue: {} {}", type(val), 0)
+            # for key,val in ob_dict.items():
+            #     jax.debug.print("\tkey: {} {}", type(key), 0)
+            #     jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
         # note that we use the convention more common in diffusion literature, where t=1 is noise and t=0 is the target
@@ -297,8 +297,8 @@ class Pi0(_model.BaseModel):
             prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
             positions = jnp.cumsum(prefix_mask, axis=1) - 1 
             _, kv_cache = self.PaliGemma.llm([prefix_tokens, None], mask=prefix_attn_mask, positions=positions)
-            jax.debug.print("KV_cache shapes: {} {}", kv_cache[0].shape, kv_cache[1].shape)
-            jax.debug.print("KV_cache type: {} {}\n", type(kv_cache[0]), type(kv_cache[1]))
+            # jax.debug.print("KV_cache shapes: {} {}", kv_cache[0].shape, kv_cache[1].shape)
+            # jax.debug.print("KV_cache type: {} {}\n", type(kv_cache[0]), type(kv_cache[1]))
             '''
             PaliGemma (pi0 paper): {width=2048, depth=18, mlp dim=16,384, num heads=18, num kv heads=1, head dim=256}
 
@@ -320,9 +320,9 @@ class Pi0(_model.BaseModel):
         def step(carry):
             x_t, time = carry
             timestep_print = jnp.broadcast_to(time, batch_size)
-            jax.debug.print("=== Step at time={:.3f} ===", time)
-            jax.debug.print("Current KV cache K shape: {}", kv_cache[0].shape)
-            jax.debug.print("Current KV cache V shape: {}", kv_cache[1].shape)
+            # jax.debug.print("=== Step at time={:.3f} ===", time)
+            # jax.debug.print("Current KV cache K shape: {}", kv_cache[0].shape)
+            # jax.debug.print("Current KV cache V shape: {}", kv_cache[1].shape)
             with jax.named_scope("embed_suffix"):
                 suffix_tokens, suffix_mask, suffix_ar_mask, adarms_cond = self.embed_suffix(
                     observation, x_t, timestep_print
@@ -354,8 +354,8 @@ class Pi0(_model.BaseModel):
                 suffix_attn_mask = make_attn_mask(suffix_mask, suffix_ar_mask)
                 prefix_attn_mask = einops.repeat(prefix_mask, "b p -> b s p", s=suffix_tokens.shape[1])
                 full_attn_mask = jnp.concatenate([prefix_attn_mask, suffix_attn_mask], axis=-1)
-                jax.debug.print("full_attn_mask shape: {}", full_attn_mask.shape)
-                jax.debug.print("full_attn_mask: {}", full_attn_mask)
+                # jax.debug.print("full_attn_mask shape: {}", full_attn_mask.shape)
+                # jax.debug.print("full_attn_mask: {}", full_attn_mask)
                 positions = jnp.sum(prefix_mask, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
                 # jax.debug.print("suffix positions: {}", positions[0])
 
@@ -373,7 +373,7 @@ class Pi0(_model.BaseModel):
             #     last_positions = jnp.arange(kv_cache[0].shape[2] - 51, kv_cache[0].shape[2])
             #     jax.debug.print("Cache positions being written to: {}", last_positions)
 
-            jax.debug.print("Returned_kv_cache seq_len: {}", returned_kv_cache[0].shape[2])
+            # jax.debug.print("Returned_kv_cache seq_len: {}", returned_kv_cache[0].shape[2])
 
             assert prefix_out is None
 
