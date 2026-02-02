@@ -88,6 +88,8 @@ class AlohaInputs(transforms.DataTransformFn):
                 images[dest] = np.zeros_like(base_image)
                 image_masks[dest] = np.False_
 
+        print("image_mask", image_masks)
+
         inputs = {
             "image": images,
             "image_mask": image_masks,
@@ -102,8 +104,6 @@ class AlohaInputs(transforms.DataTransformFn):
 
         if "prompt" in data:
             inputs["prompt"] = data["prompt"]
-
-        print("inputs", inputs)
         return inputs
 
 

@@ -283,8 +283,8 @@ class Pi0(_model.BaseModel):
             '''
             # jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            for key,val in ob_dict.items():
-                jax.debug.print("\tkey: {} {}", type(key), key)
+            # for key,val in ob_dict.items():
+            #     jax.debug.print("\tkey: {} {}", type(key), key)
                 # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
