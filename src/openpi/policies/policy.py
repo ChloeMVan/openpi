@@ -90,7 +90,7 @@ class Policy(BasePolicy):
             sample_kwargs["noise"] = noise
 
         observation = _model.Observation.from_dict(inputs)
-        jax.debug.print(f"infer observation {observation}")
+        jax.debug.print(f"infer observation {observation.images.keys()}")
         start_time = time.monotonic()
         outputs = {
             "state": inputs["state"],
