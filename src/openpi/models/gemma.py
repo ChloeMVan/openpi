@@ -34,6 +34,7 @@ import flax.linen as nn
 import jax
 import jax.numpy as jnp
 import sys
+import numpy as np
 
 import openpi.models.lora as lora
 import openpi.shared.array_typing as at
@@ -153,7 +154,12 @@ class Embedder(nn.Module):
     def encode(self, x):
         logger.info("Embedder called for encode")
         logger.info(f"len of embedding table {len(self.input_embedding_table)}")
-        logger.info(f"size of embedding table {sys.getsizeof(self.input_embedding_table)} bytes")
+        vocab_size = len(self.input_embedding_table)
+        hidden_size = self.input_embedding_table.shape[1]
+        dtype_size = np.dtype(self.input_embedding_table.dtype).itemsize
+        size_bytes = vocab_size * hidden_size * dtype_size
+        logger.info(f"size of embedding table {size_bytes:,} bytes ({size_bytes/1e9:.2f} GB)")
+
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
         return x
