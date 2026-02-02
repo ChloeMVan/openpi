@@ -33,6 +33,7 @@ import einops
 import flax.linen as nn
 import jax
 import jax.numpy as jnp
+import sys
 
 import openpi.models.lora as lora
 import openpi.shared.array_typing as at
@@ -151,7 +152,8 @@ class Embedder(nn.Module):
 
     def encode(self, x):
         logger.info("Embedder called for encode")
-        logger.info(f"size of embedding table {len(self.input_embedding_table)}")
+        logger.info(f"len of embedding table {len(self.input_embedding_table)}")
+        logger.info(f"size of embedding table {sys.getsizeof(self.input_embedding_table)} bytes")
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
         return x
