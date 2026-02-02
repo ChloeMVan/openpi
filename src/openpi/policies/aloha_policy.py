@@ -79,6 +79,7 @@ class AlohaInputs(transforms.DataTransformFn):
                 f"left_wrist_{i}_rgb": f"cam_left_wrist_{i}",
                 f"right_wrist_{i}_rgb": f"cam_right_wrist_{i}",
             })
+        print("extra_image", extra_image_names)
 
         for dest, source in extra_image_names.items():
             if source in in_images:
