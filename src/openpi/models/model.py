@@ -42,6 +42,18 @@ IMAGE_KEYS = (
     "right_wrist_0_rgb",
 )
 
+# added 
+num_extra_wrist_cams = 1  # How many extra images you want
+
+new_image_keys = list(IMAGE_KEYS)
+for i in range(1, num_extra_wrist_cams + 1):
+    new_image_keys.append(f"left_wrist_{i}_rgb")
+    new_image_keys.append(f"right_wrist_{i}_rgb")
+
+# Convert back to tuple if needed
+IMAGE_KEYS = tuple(new_image_keys)
+
+# done
 
 # This may need change if we release a small model.
 IMAGE_RESOLUTION = (224, 224)
