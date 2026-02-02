@@ -170,7 +170,7 @@ def _random_observation_aloha() -> dict:
     }
     
     # Add extra wrist cameras
-    num_extra_wrist_cams = 0
+    num_extra_wrist_cams = 1
     for i in range(1, num_extra_wrist_cams + 1):
         observation["images"].update({
             f"cam_left_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
