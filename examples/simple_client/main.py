@@ -34,7 +34,7 @@ class Args:
     # API key to use for the server.
     api_key: str | None = None
     # Number of steps to run the policy for.
-    num_steps: int = 1
+    num_steps: int = 20
     # Path to save the timings to a parquet file. (e.g., timing.parquet)
     timing_file: pathlib.Path | None = None
     # Environment to run the policy in.
@@ -170,7 +170,7 @@ def _random_observation_aloha() -> dict:
     }
     
     # Add extra wrist cameras
-    num_extra_wrist_cams = 7
+    num_extra_wrist_cams = 0
     for i in range(1, num_extra_wrist_cams + 1):
         observation["images"].update({
             f"cam_left_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
