@@ -260,10 +260,10 @@ class Pi0(_model.BaseModel):
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
         with jax.named_scope("preprocess_observation"):
-            # jax.debug.print("post processing observation")
+            jax.debug.print("preprocessing observation")
             ob_dict = observation.to_dict()
-            # for key,val in ob_dict.items():
-                # jax.debug.print("\tkey: {} {}", type(key), 0)
+            for key,val in ob_dict.items():
+                jax.debug.print("\tkey: {} {}", type(key), key)
                 # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
@@ -281,10 +281,10 @@ class Pi0(_model.BaseModel):
                 token_loss_mask=observation.token_loss_mask,
             )
             '''
-            # jax.debug.print("post processing observation")
+            jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            # for key,val in ob_dict.items():
-            #     jax.debug.print("\tkey: {} {}", type(key), key)
+            for key,val in ob_dict.items():
+                jax.debug.print("\tkey: {} {}", type(key), key)
                 # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
