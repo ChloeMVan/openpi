@@ -68,7 +68,7 @@ class Policy(BasePolicy):
     def infer(self, obs: dict, *, noise: np.ndarray | None = None) -> dict:  # type: ignore[misc]
         # Make a copy since transformations may modify the inputs in place.
         inputs = jax.tree.map(lambda x: x, obs)
-        jax.debug.print(f"infer obs {obs.keys()}")
+        # jax.debug.print(f"infer obs {obs.keys()}")
         # jax.debug.print(f"infer inputs {inputs}")
         inputs = self._input_transform(inputs)
         if not self._is_pytorch_model:
@@ -90,7 +90,7 @@ class Policy(BasePolicy):
             sample_kwargs["noise"] = noise
 
         observation = _model.Observation.from_dict(inputs)
-        jax.debug.print(f"infer observation {observation.images.keys()}")
+        # jax.debug.print(f"infer observation {observation.images.keys()}")
         start_time = time.monotonic()
         outputs = {
             "state": inputs["state"],
