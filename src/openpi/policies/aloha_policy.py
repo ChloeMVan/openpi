@@ -88,7 +88,7 @@ class AlohaInputs(transforms.DataTransformFn):
                 images[dest] = np.zeros_like(base_image)
                 image_masks[dest] = np.False_
 
-        print("image_mask", image_masks)
+        # print("image_mask", image_masks)
 
         inputs = {
             "image": images,

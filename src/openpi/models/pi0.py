@@ -125,15 +125,15 @@ class Pi0(_model.BaseModel):
         high level: Embed all observation context (images + language) 
         into a single prefix token sequence.
         '''
-        total_tokens = 0
+        # total_tokens = 0
     
-        for name in obs.images:
-            image_tokens, _ = self.PaliGemma.img(obs.images[name], train=False)
-            token_count = image_tokens.shape[1]
-            total_tokens += token_count
-            jax.debug.print("Image {}: {} tokens", name, token_count)
+        # for name in obs.images:
+        #     image_tokens, _ = self.PaliGemma.img(obs.images[name], train=False)
+        #     token_count = image_tokens.shape[1]
+        #     total_tokens += token_count
+        #     jax.debug.print("Image {}: {} tokens", name, token_count)
     
-        jax.debug.print("=== TOTAL IMAGE TOKENS: {} ===", total_tokens)
+        # jax.debug.print("=== TOTAL IMAGE TOKENS: {} ===", total_tokens)
 
         input_mask = []
         ar_mask = []
@@ -260,10 +260,10 @@ class Pi0(_model.BaseModel):
         noise: at.Float[at.Array, "b ah ad"] | None = None,
     ) -> _model.Actions:
         with jax.named_scope("preprocess_observation"):
-            jax.debug.print("preprocessing observation")
+            # jax.debug.print("preprocessing observation")
             ob_dict = observation.to_dict()
-            for key,val in ob_dict['image'].items():
-                jax.debug.print("\tkey: {} {}", type(key), key)
+            # for key,val in ob_dict['image'].items():
+            #     jax.debug.print("\tkey: {} {}", type(key), key)
                 # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
@@ -281,10 +281,10 @@ class Pi0(_model.BaseModel):
                 token_loss_mask=observation.token_loss_mask,
             )
             '''
-            jax.debug.print("post processing observation")
+            # jax.debug.print("post processing observation")
             ob_dict = observation.to_dict()
-            for key,val in ob_dict['image'].items():
-                jax.debug.print("\tkey: {} {}", type(key), key)
+            # for key,val in ob_dict['image'].items():
+            #     jax.debug.print("\tkey: {} {}", type(key), key)
                 # jax.debug.print("\tvalue: {} {}", type(val), 0)
 
 
