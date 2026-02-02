@@ -43,7 +43,7 @@ IMAGE_KEYS = (
 )
 
 # added 
-num_extra_wrist_cams = 3 # How many extra images you want
+num_extra_wrist_cams = 4 # How many extra images you want
 
 new_image_keys = list(IMAGE_KEYS)
 for i in range(1, num_extra_wrist_cams + 1):
