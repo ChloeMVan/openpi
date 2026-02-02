@@ -131,10 +131,10 @@ class Pi0(_model.BaseModel):
             image_tokens, _ = self.PaliGemma.img(obs.images[name], train=False)
             token_count = image_tokens.shape[1]
             total_tokens += token_count
-        jax.debug.print("Image {}: {} tokens", name, token_count)
+            jax.debug.print("Image {}: {} tokens", name, token_count)
     
         jax.debug.print("=== TOTAL IMAGE TOKENS: {} ===", total_tokens)
-        
+
         input_mask = []
         ar_mask = []
         tokens = []
