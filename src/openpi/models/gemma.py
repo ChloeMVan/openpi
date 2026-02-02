@@ -150,7 +150,8 @@ class Embedder(nn.Module):
         )
 
     def encode(self, x):
-        # logger.info("Embedder called for encode")
+        logger.info("Embedder called for encode")
+        logger.info(f"size of embedding table {len(self.input_embedding_table)}")
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
         return x
