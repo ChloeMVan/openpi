@@ -54,7 +54,7 @@ class AlohaInputs(transforms.DataTransformFn):
         in_images = data["images"]
         if set(in_images) - set(self.EXPECTED_CAMERAS):
             raise ValueError(f"Expected images to contain {self.EXPECTED_CAMERAS}, got {tuple(in_images)}")
-        print("in_images", in_images.keys())
+        #print("in_images", in_images.keys())
 
         # Assume that base image always exists.
         base_image = in_images["cam_high"]
