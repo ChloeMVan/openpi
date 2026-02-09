@@ -159,15 +159,14 @@ def _random_observation_aloha() -> dict:
         num_extra_wrist_cams: Number of extra wrist camera pairs to include
     """
     base_prompt = "do something"
-    prompt_doublings = 3
-
-    # Double the prompt length
+    target_chars = 5_000   # 5k, 10k, 20k, 50k, 100k
     prompt = base_prompt
-    for _ in range(prompt_doublings):
-        prompt = prompt + " " + prompt  # space avoids token merge weirdness
 
+    while len(prompt) < target_chars:
+        prompt = prompt + " " + prompt
+
+    prompt = prompt[:target_chars]  # cap exactly if you want
     logger.info(f"Prompt length (chars): {len(prompt)}")
-    logger.info(f"Prompt text:\n{prompt}\n")
 
     observation = {
         "state": np.ones((14,)),
