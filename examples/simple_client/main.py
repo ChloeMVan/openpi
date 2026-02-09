@@ -30,7 +30,7 @@ class Args:
     # Host and port to connect to the server.
     host: str = "0.0.0.0"
     # Port to connect to the server. If None, the server will use the default port.
-    port: int | None = 8000
+    port: int | None = 8001
     # API key to use for the server.
     api_key: str | None = None
     # Number of steps to run the policy for.
