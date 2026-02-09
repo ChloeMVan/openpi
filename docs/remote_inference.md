@@ -37,8 +37,8 @@ from openpi_client import image_tools
 from openpi_client import websocket_client_policy
 
 # Outside of episode loop, initialize the policy client.
-# Point to the host and port of the policy server (localhost and 8000 are the defaults).
-client = websocket_client_policy.WebsocketClientPolicy(host="localhost", port=8000)
+# Point to the host and port of the policy server (localhost and 8001 are the defaults).
+client = websocket_client_policy.WebsocketClientPolicy(host="localhost", port=8001)
 
 for step in range(num_steps):
     # Inside the episode loop, construct the observation.
