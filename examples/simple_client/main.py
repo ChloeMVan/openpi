@@ -158,6 +158,17 @@ def _random_observation_aloha() -> dict:
     Args:
         num_extra_wrist_cams: Number of extra wrist camera pairs to include
     """
+    base_prompt = "do something"
+    prompt_doublings = 0
+
+    # Double the prompt length
+    prompt = base_prompt
+    for _ in range(prompt_doublings):
+        prompt = prompt + " " + prompt  # space avoids token merge weirdness
+
+    print(f"Prompt length (chars): {len(prompt)}")
+    print(f"Prompt text:\n{prompt}\n")
+
     observation = {
         "state": np.ones((14,)),
         "images": {
@@ -176,6 +187,8 @@ def _random_observation_aloha() -> dict:
             f"cam_left_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
             f"cam_right_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
         })
+
+    
     
     return observation
 

@@ -158,7 +158,9 @@ class Embedder(nn.Module):
         hidden_size = self.input_embedding_table.shape[1]
         dtype_size = np.dtype(self.input_embedding_table.dtype).itemsize
         size_bytes = vocab_size * hidden_size * dtype_size
+        # len of embedding table 257152
         logger.info(f"size of embedding table {size_bytes:,} bytes ({size_bytes/1e9:.2f} GB)")
+        # size of embedding table 1,053,294,592 bytes (1.05 GB)
 
         x = self.input_embedding_table[(x,)]
         x *= jnp.sqrt(self.embed_dim).astype(x.dtype)
