@@ -159,7 +159,7 @@ def _random_observation_aloha() -> dict:
         num_extra_wrist_cams: Number of extra wrist camera pairs to include
     """
     base_prompt = "do something"
-    prompt_doublings = 1
+    prompt_doublings = 2
 
     # Double the prompt length
     prompt = base_prompt
