@@ -62,15 +62,8 @@ class AlohaInputs(transforms.DataTransformFn):
         images = {
             "base_0_rgb": base_image,
         }
-
-        def _mask_like_image(img: np.ndarray, value: bool) -> np.ndarray:
-            # If img is (H,W,C) => shape[:-3] == () => returns scalar-shaped array (works)
-            # If img is (*b,H,W,C) => returns (*b,) boolean array
-            prefix = img.shape[:-3]
-            return np.full(prefix, value, dtype=bool)
-
         image_masks = {
-            "base_0_rgb": _mask_like_image(base_image, True),
+            "base_0_rgb": np.True_,
         }
 
         # Add the extra images.
@@ -90,10 +83,10 @@ class AlohaInputs(transforms.DataTransformFn):
         for dest, source in extra_image_names.items():
             if source in in_images:
                 images[dest] = in_images[source]
-                image_masks[dest] = _mask_like_image(images[dest], True),
+                image_masks[dest] = np.True_
             else:
                 images[dest] = np.zeros_like(base_image)
-                image_masks[dest] = _mask_like_image(base_image, False)
+                image_masks[dest] = np.False_
 
         # print("image_mask", image_masks)
 
@@ -195,15 +188,7 @@ def _decode_aloha(data: dict, *, adapt_to_pi: bool = False) -> dict:
         if np.issubdtype(img.dtype, np.floating):
             img = (255 * img).astype(np.uint8)
         # Convert from [channel, height, width] to [height, width, channel].
-        # Support both unbatched (C,H,W) and batched (B,C,H,W)
-        if img.ndim == 3:
-            # (C,H,W) -> (H,W,C)
-            return einops.rearrange(img, "c h w -> h w c")
-        elif img.ndim == 4:
-            # (B,C,H,W) -> (B,H,W,C)
-            return einops.rearrange(img, "b c h w -> b h w c")
-        else:
-            raise ValueError(f"Unexpected image shape {img.shape}, expected (C,H,W) or (B,C,H,W)")
+        return einops.rearrange(img, "c h w -> h w c")
 
     images = data["images"]
     images_dict = {name: convert_image(img) for name, img in images.items()}
@@ -218,7 +203,7 @@ def _decode_state(state: np.ndarray, *, adapt_to_pi: bool = False) -> np.ndarray
         # Flip the joints.
         state = _joint_flip_mask() * state
         # Reverse the gripper transformation that is being applied by the Aloha runtime.
-        state[..., [6, 13]] = _gripper_to_angular(state[..., [6, 13]])
+        state[[6, 13]] = _gripper_to_angular(state[[6, 13]])
     return state
 
 

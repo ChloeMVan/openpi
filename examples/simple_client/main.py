@@ -151,7 +151,7 @@ def main(args: Args) -> None:
         timing_recorder.write_parquet(args.timing_file)
 
 
-def _random_observation_aloha(batch_size: int = 1) -> dict:
+def _random_observation_aloha() -> dict:
     """
     Generate random observation with variable number of wrist cameras.
     
@@ -164,19 +164,19 @@ def _random_observation_aloha(batch_size: int = 1) -> dict:
 
     # while len(prompt) < target_chars:
     #     prompt = prompt + " " + prompt
+
     # prompt = prompt[:target_chars]  # cap exactly if you want
     logger.info(f"Prompt length (chars): {len(prompt)}")
 
     observation = {
-        "state": np.ones((batch_size, 14), dtype=np.float32),
+        "state": np.ones((14,)),
         "images": {
-            "cam_high": np.random.randint(256, size=(batch_size, 3, 224, 224), dtype=np.uint8),
-            "cam_low": np.random.randint(256, size=(batch_size, 3, 224, 224), dtype=np.uint8),
-            "cam_left_wrist": np.random.randint(256, size=(batch_size, 3, 224, 224), dtype=np.uint8),
-            "cam_right_wrist": np.random.randint(256, size=(batch_size, 3, 224, 224), dtype=np.uint8),
+            "cam_high": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            "cam_low": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            "cam_left_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
+            "cam_right_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
         },
-        # try list-of-strings for batching
-        "prompt": [prompt] * batch_size,
+        "prompt": prompt,
     }
     
     # Add extra wrist cameras

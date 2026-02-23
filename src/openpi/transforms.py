@@ -249,32 +249,6 @@ class TokenizePrompt(DataTransformFn):
     tokenizer: _tokenizer.PaligemmaTokenizer
     discrete_state_input: bool = False
 
-    def _normalize_prompt(self, prompt):
-        # Case 1: already a Python string
-        if isinstance(prompt, str):
-            return prompt
-
-        # Case 2: numpy scalar / numpy array
-        if isinstance(prompt, np.ndarray):
-            if prompt.ndim == 0:
-                # e.g. array("do X", dtype=object)
-                return prompt.item()
-            if prompt.ndim == 1:
-                # batched prompts; for now use first element
-                first = prompt[0]
-                return first.item() if hasattr(first, "item") else str(first)
-            raise ValueError(f"Unexpected prompt ndarray shape: {prompt.shape}")
-
-        # Case 3: list/tuple (maybe batched)
-        if isinstance(prompt, (list, tuple)):
-            if len(prompt) == 0:
-                return ""
-            first = prompt[0]
-            return first.item() if hasattr(first, "item") else str(first)
-
-        # Fallback: try to stringify
-        return str(prompt)
-
     def __call__(self, data: DataDict) -> DataDict:
         if (prompt := data.pop("prompt", None)) is None:
             raise ValueError("Prompt is required")
@@ -286,7 +260,7 @@ class TokenizePrompt(DataTransformFn):
             state = None
 
         if not isinstance(prompt, str):
-            prompt = self._normalize_prompt(prompt)
+            prompt = prompt.item()
 
         tokens, token_masks = self.tokenizer.tokenize(prompt, state)
         return {**data, "tokenized_prompt": tokens, "tokenized_prompt_mask": token_masks}
