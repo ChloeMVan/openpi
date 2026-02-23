@@ -176,7 +176,7 @@ def _random_observation_aloha(batch_size: int = 1) -> dict:
             "cam_right_wrist": np.random.randint(256, size=(batch_size, 3, 224, 224), dtype=np.uint8),
         },
         # try list-of-strings for batching
-        "prompt": [prompt] * batch_size,
+        "prompt": prompt,
     }
     
     # Add extra wrist cameras
