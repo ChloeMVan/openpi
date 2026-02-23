@@ -123,6 +123,9 @@ class Observation(Generic[ArrayT]):
     def from_dict(cls, data: at.PyTree[ArrayT]) -> "Observation[ArrayT]":
         """This method defines the mapping between unstructured data (i.e., nested dict) to the structured Observation format."""
         # Ensure that tokenized_prompt and tokenized_prompt_mask are provided together.
+        jax.debug.print("=== DEBUG: Entering Observation.from_dict ===")
+        jax.debug.print("Data keys: {}", list(data.keys()))
+        
         if ("tokenized_prompt" in data) != ("tokenized_prompt_mask" in data):
             raise ValueError("tokenized_prompt and tokenized_prompt_mask must be provided together.")
         # If images are uint8, convert them to [-1, 1] float32.
