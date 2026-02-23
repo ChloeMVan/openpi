@@ -52,7 +52,7 @@ class Pi0Config(_model.BaseModelConfig):
         return Pi0(self, rngs=nnx.Rngs(rng))
 
     @override
-    def inputs_spec(self, *, batch_size: int = 3) -> tuple[_model.Observation, _model.Actions]:
+    def inputs_spec(self, *, batch_size: int = 1) -> tuple[_model.Observation, _model.Actions]:
         image_spec = jax.ShapeDtypeStruct([batch_size, *_model.IMAGE_RESOLUTION, 3], jnp.float32)
         image_mask_spec = jax.ShapeDtypeStruct([batch_size], jnp.bool_)
 
