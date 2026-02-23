@@ -73,21 +73,21 @@ class WebsocketPolicyServer:
                     for _ in range(2):
                         warm = self._policy.infer(obs)
                         # Force sync so warmup actually executes
-                        jax.tree.map(
-                            lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
-                            warm,
-                        )
+                        # jax.tree.map(
+                        #     lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
+                        #     warm,
+                        # )
 
                     # Trace one inference
-                    jax.profiler.start_trace(trace_dir)
+                    # jax.profiler.start_trace(trace_dir)
                     action = self._policy.infer(obs)
-                    jax.tree.map(
-                        lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
-                        action,
-                    )
-                    jax.profiler.stop_trace()
+                    # jax.tree.map(
+                    #     lambda x: x.block_until_ready() if hasattr(x, "block_until_ready") else x,
+                    #     action,
+                    # )
+                    # jax.profiler.stop_trace()
 
-                    logger.info("Wrote JAX trace to %s", trace_dir)
+                    # logger.info("Wrote JAX trace to %s", trace_dir)
                 else:
                     action = self._policy.infer(obs)
 
