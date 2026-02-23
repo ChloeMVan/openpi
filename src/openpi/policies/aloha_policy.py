@@ -62,8 +62,15 @@ class AlohaInputs(transforms.DataTransformFn):
         images = {
             "base_0_rgb": base_image,
         }
+
+        def _mask_like_image(img: np.ndarray, value: bool) -> np.ndarray:
+            # If img is (H,W,C) => shape[:-3] == () => returns scalar-shaped array (works)
+            # If img is (*b,H,W,C) => returns (*b,) boolean array
+            prefix = img.shape[:-3]
+            return np.full(prefix, value, dtype=bool)
+
         image_masks = {
-            "base_0_rgb": np.True_,
+            "base_0_rgb": _mask_like_image(base_image, True),
         }
 
         # Add the extra images.
@@ -83,10 +90,10 @@ class AlohaInputs(transforms.DataTransformFn):
         for dest, source in extra_image_names.items():
             if source in in_images:
                 images[dest] = in_images[source]
-                image_masks[dest] = np.True_
+                image_masks[dest] = _mask_like_image(images[dest], True),
             else:
                 images[dest] = np.zeros_like(base_image)
-                image_masks[dest] = np.False_
+                image_masks[dest] = _mask_like_image(base_image, False)
 
         # print("image_mask", image_masks)
 

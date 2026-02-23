@@ -260,7 +260,7 @@ class TokenizePrompt(DataTransformFn):
             state = None
 
         if not isinstance(prompt, str):
-            prompt = prompt.item()
+            prompt = prompt[0].item()
 
         tokens, token_masks = self.tokenizer.tokenize(prompt, state)
         return {**data, "tokenized_prompt": tokens, "tokenized_prompt_mask": token_masks}
@@ -275,7 +275,7 @@ class TokenizeFASTInputs(DataTransformFn):
             raise ValueError("Prompt is required")
 
         if not isinstance(prompt, str):
-            prompt = prompt.item()
+            prompt = prompt[0].item()
 
         state, actions = data["state"], data.get("actions")
         tokens, token_mask, ar_mask, loss_mask = self.tokenizer.tokenize(prompt, state, actions)
