@@ -151,45 +151,40 @@ def main(args: Args) -> None:
         timing_recorder.write_parquet(args.timing_file)
 
 
-def _random_observation_aloha() -> dict:
+def _random_observation_aloha(batch_size: int = 1, num_extra_wrist_cams: int = 0) -> dict:
     """
-    Generate random observation with variable number of wrist cameras.
+    Generate batched random observations for ALOHA.
     
     Args:
+        batch_size: Number of observations in the batch
         num_extra_wrist_cams: Number of extra wrist camera pairs to include
     """
     base_prompt = "do something"
-    # target_chars = 50_000   # 5k, 10k, 20k, 50k, 100k
     prompt = base_prompt
-
-    # while len(prompt) < target_chars:
-    #     prompt = prompt + " " + prompt
-
-    # prompt = prompt[:target_chars]  # cap exactly if you want
     logger.info(f"Prompt length (chars): {len(prompt)}")
-
-    observation = {
-        "state": np.ones((14,)),
-        "images": {
-            "cam_high": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            "cam_low": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            "cam_left_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            "cam_right_wrist": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-        },
-        "prompt": prompt,
+    
+    # Always return batched data (batch_size=1 means batch of 1)
+    batched = {
+        "state": np.stack([np.ones((14,)) for _ in range(batch_size)]),
+        "images": {},
+        "prompt": [prompt for _ in range(batch_size)],  # List of prompts for batch
     }
     
+    # Base cameras
+    base_cameras = ["cam_high", "cam_low", "cam_left_wrist", "cam_right_wrist"]
+    
     # Add extra wrist cameras
-    num_extra_wrist_cams = 0
     for i in range(1, num_extra_wrist_cams + 1):
-        observation["images"].update({
-            f"cam_left_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-            f"cam_right_wrist_{i}": np.random.randint(256, size=(3, 224, 224), dtype=np.uint8),
-        })
-
+        base_cameras.extend([f"cam_left_wrist_{i}", f"cam_right_wrist_{i}"])
     
+    # Create batched images for each camera
+    for cam_name in base_cameras:
+        batched["images"][cam_name] = np.stack([
+            np.random.randint(256, size=(3, 224, 224), dtype=np.uint8) 
+            for _ in range(batch_size)
+        ])
     
-    return observation
+    return batched
 
 
 def _random_observation_droid() -> dict:

@@ -58,12 +58,13 @@ class AlohaInputs(transforms.DataTransformFn):
 
         # Assume that base image always exists.
         base_image = in_images["cam_high"]
+        batch_size = data["state"].shape[0]
 
         images = {
             "base_0_rgb": base_image,
         }
         image_masks = {
-            "base_0_rgb": np.True_,
+            "base_0_rgb": np.ones(batch_size, dtype=bool),
         }
 
         # Add the extra images.
@@ -83,10 +84,10 @@ class AlohaInputs(transforms.DataTransformFn):
         for dest, source in extra_image_names.items():
             if source in in_images:
                 images[dest] = in_images[source]
-                image_masks[dest] = np.True_
+                image_masks[dest] = np.ones(batch_size, dtype=bool)
             else:
                 images[dest] = np.zeros_like(base_image)
-                image_masks[dest] = np.False_
+                image_masks[dest] = np.zeros(batch_size, dtype=bool)
 
         # print("image_mask", image_masks)
 
@@ -117,7 +118,7 @@ class AlohaOutputs(transforms.DataTransformFn):
 
     def __call__(self, data: dict) -> dict:
         # Only return the first 14 dims.
-        actions = np.asarray(data["actions"][:, :14])
+        actions = np.asarray(data["actions"][..., :14])
         return {"actions": _encode_actions(actions, adapt_to_pi=self.adapt_to_pi)}
 
 
@@ -188,7 +189,10 @@ def _decode_aloha(data: dict, *, adapt_to_pi: bool = False) -> dict:
         if np.issubdtype(img.dtype, np.floating):
             img = (255 * img).astype(np.uint8)
         # Convert from [channel, height, width] to [height, width, channel].
-        return einops.rearrange(img, "c h w -> h w c")
+        if len(img.shape) == 4:  # [batch, channel, height, width]
+            return np.stack([einops.rearrange(x, "c h w -> h w c") for x in img])
+        else:  # [channel, height, width]
+            return einops.rearrange(img, "c h w -> h w c")
 
     images = data["images"]
     images_dict = {name: convert_image(img) for name, img in images.items()}
@@ -203,7 +207,10 @@ def _decode_state(state: np.ndarray, *, adapt_to_pi: bool = False) -> np.ndarray
         # Flip the joints.
         state = _joint_flip_mask() * state
         # Reverse the gripper transformation that is being applied by the Aloha runtime.
-        state[[6, 13]] = _gripper_to_angular(state[[6, 13]])
+        if len(state.shape) == 2:  # Batched
+            state[:, [6, 13]] = _gripper_to_angular(state[:, [6, 13]])
+        else:  # Single
+            state[[6, 13]] = _gripper_to_angular(state[[6, 13]])
     return state
 
 
@@ -211,12 +218,18 @@ def _encode_actions(actions: np.ndarray, *, adapt_to_pi: bool = False) -> np.nda
     if adapt_to_pi:
         # Flip the joints.
         actions = _joint_flip_mask() * actions
-        actions[:, [6, 13]] = _gripper_from_angular(actions[:, [6, 13]])
+        if len(actions.shape) == 3:  # [batch, horizon, 14]
+            actions[:, :, [6, 13]] = _gripper_from_angular(actions[:, :, [6, 13]])
+        elif len(actions.shape) == 2:  # [horizon, 14]
+            actions[:, [6, 13]] = _gripper_from_angular(actions[:, [6, 13]])
     return actions
 
 
 def _encode_actions_inv(actions: np.ndarray, *, adapt_to_pi: bool = False) -> np.ndarray:
     if adapt_to_pi:
         actions = _joint_flip_mask() * actions
-        actions[:, [6, 13]] = _gripper_from_angular_inv(actions[:, [6, 13]])
+        if len(actions.shape) == 3:  # [batch, horizon, 14]
+            actions[:, :, [6, 13]] = _gripper_from_angular_inv(actions[:, :, [6, 13]])
+        elif len(actions.shape) == 2:  # [horizon, 14]
+            actions[:, [6, 13]] = _gripper_from_angular_inv(actions[:, [6, 13]])
     return actions
