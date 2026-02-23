@@ -151,7 +151,7 @@ def main(args: Args) -> None:
         timing_recorder.write_parquet(args.timing_file)
 
 
-def _random_observation_aloha(batch_size: int = 1) -> dict:
+def _random_observation_aloha(batch_size: int = 3) -> dict:
     """
     Generate random observation with variable number of wrist cameras.
     
