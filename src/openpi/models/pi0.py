@@ -293,6 +293,7 @@ class Pi0(_model.BaseModel):
         with jax.named_scope("init_noise_dt"):
             dt = -1.0 / num_steps
             batch_size = observation.state.shape[0]
+            jax.debug.print(f"BATCH SIZE {batch_size}")
             if noise is None:
                 noise = jax.random.normal(rng, (batch_size, self.action_horizon, self.action_dim))
 
