@@ -90,7 +90,7 @@ class AlohaInputs(transforms.DataTransformFn):
         for dest, source in extra_image_names.items():
             if source in in_images:
                 images[dest] = in_images[source]
-                image_masks[dest] = _mask_like_image(images[dest], True),
+                image_masks[dest] = _mask_like_image(images[dest], True)
             else:
                 images[dest] = np.zeros_like(base_image)
                 image_masks[dest] = _mask_like_image(base_image, False)

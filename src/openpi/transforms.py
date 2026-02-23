@@ -250,29 +250,23 @@ class TokenizePrompt(DataTransformFn):
     discrete_state_input: bool = False
 
     def _normalize_prompt(self, prompt):
-        # Case 1: already a Python string
         if isinstance(prompt, str):
             return prompt
 
-        # Case 2: numpy scalar / numpy array
         if isinstance(prompt, np.ndarray):
             if prompt.ndim == 0:
-                # e.g. array("do X", dtype=object)
-                return prompt.item()
+                return str(prompt.item())
             if prompt.ndim == 1:
-                # batched prompts; for now use first element
                 first = prompt[0]
-                return first.item() if hasattr(first, "item") else str(first)
+                return str(first.item() if hasattr(first, "item") else first)
+            # if someone passes a weird shape, fail loudly
             raise ValueError(f"Unexpected prompt ndarray shape: {prompt.shape}")
 
-        # Case 3: list/tuple (maybe batched)
         if isinstance(prompt, (list, tuple)):
             if len(prompt) == 0:
                 return ""
             first = prompt[0]
-            return first.item() if hasattr(first, "item") else str(first)
-
-        # Fallback: try to stringify
+            return str(first.item() if hasattr(first, "item") else first)
         return str(prompt)
 
     def __call__(self, data: DataDict) -> DataDict:
@@ -289,6 +283,38 @@ class TokenizePrompt(DataTransformFn):
             prompt = self._normalize_prompt(prompt)
 
         tokens, token_masks = self.tokenizer.tokenize(prompt, state)
+        # ---- Fix 1: ensure NumPy arrays (not JAX ArrayImpl) for jaxtyping/beartype ----
+        tokens = np.asarray(tokens, dtype=np.int32)
+        token_masks = np.asarray(token_masks, dtype=bool)
+
+        # ---- Fix 2: match *b prefix with the rest of the observation ----
+        # Prefer state for prefix; fallback to any image
+        prefix = None
+        if "state" in data:
+            # state is shaped like (*b, s)
+            prefix = np.asarray(data["state"]).shape[:-1]
+        elif "images" in data and isinstance(data["images"], dict) and len(data["images"]) > 0:
+            # images are shaped like (*b, h, w, c)
+            first_img = next(iter(data["images"].values()))
+            prefix = np.asarray(first_img).shape[:-3]
+        else:
+            prefix = ()
+
+        # tokenizer typically returns (L,) or (1, L); turn into (*b, L) then (*b, 1, L) if needed
+        if tokens.ndim == 1:
+            tokens = tokens[None, :]         # (1, L)
+            token_masks = token_masks[None, :]
+
+        # If prefix has more batch-like dims than (B,), insert singleton axes after the first dim
+        # Example: prefix=(B,1) and tokens=(B,L) -> (B,1,L)
+        while tokens.ndim < len(prefix) + 1:
+            tokens = np.expand_dims(tokens, axis=1)
+            token_masks = np.expand_dims(token_masks, axis=1)
+
+        # Broadcast to exact prefix (common case: prefix=(B,1))
+        target_shape = tuple(prefix) + (tokens.shape[-1],)
+        tokens = np.broadcast_to(tokens, target_shape)
+        token_masks = np.broadcast_to(token_masks, target_shape)
         return {**data, "tokenized_prompt": tokens, "tokenized_prompt_mask": token_masks}
 
 
