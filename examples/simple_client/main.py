@@ -167,7 +167,7 @@ def _random_observation_aloha(batch_size: int = 1, num_extra_wrist_cams: int = 0
     batched = {
         "state": np.stack([np.ones((14,)) for _ in range(batch_size)]),
         "images": {},
-        "prompt": [prompt for _ in range(batch_size)],  # List of prompts for batch
+        "prompt": prompt,  # single value due to list errors
     }
     
     # Base cameras
