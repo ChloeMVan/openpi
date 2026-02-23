@@ -259,8 +259,25 @@ class TokenizePrompt(DataTransformFn):
         else:
             state = None
 
-        if not isinstance(prompt, str):
-            prompt = prompt.item()
+        if isinstance(prompt, (list, tuple)):
+            # Batch of prompts
+            all_tokens = []
+            all_masks = []
+            for p in prompt:
+                if not isinstance(p, str):
+                    p = p.item() if hasattr(p, 'item') else str(p)
+                tokens, masks = self.tokenizer.tokenize(p, state)
+                all_tokens.append(tokens)
+                all_masks.append(masks)
+            
+            # Stack along batch dimension
+            tokens = np.stack(all_tokens)
+            token_masks = np.stack(all_masks)
+        else:
+            # Single prompt
+            if not isinstance(prompt, str):
+                prompt = prompt.item()
+            tokens, token_masks = self.tokenizer.tokenize(prompt, state)
 
         tokens, token_masks = self.tokenizer.tokenize(prompt, state)
         return {**data, "tokenized_prompt": tokens, "tokenized_prompt_mask": token_masks}
