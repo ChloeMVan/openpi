@@ -188,7 +188,15 @@ def _decode_aloha(data: dict, *, adapt_to_pi: bool = False) -> dict:
         if np.issubdtype(img.dtype, np.floating):
             img = (255 * img).astype(np.uint8)
         # Convert from [channel, height, width] to [height, width, channel].
-        return einops.rearrange(img, "c h w -> h w c")
+        # Support both unbatched (C,H,W) and batched (B,C,H,W)
+        if img.ndim == 3:
+            # (C,H,W) -> (H,W,C)
+            return einops.rearrange(img, "c h w -> h w c")
+        elif img.ndim == 4:
+            # (B,C,H,W) -> (B,H,W,C)
+            return einops.rearrange(img, "b c h w -> b h w c")
+        else:
+            raise ValueError(f"Unexpected image shape {img.shape}, expected (C,H,W) or (B,C,H,W)")
 
     images = data["images"]
     images_dict = {name: convert_image(img) for name, img in images.items()}
